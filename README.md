@@ -1,2 +1,5 @@
-# Hydra-Project
-Hydra Project for SimbirSoft
+{% note info "Заголовок примечания" %}
+
+Добавьте содержание для примечания
+
+{% endnote %}
