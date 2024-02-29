@@ -1,1 +1,3 @@
-[12312312321](test)
+- [RoadMap in image](https://github.com/mar1k163/Hydra-Project/blob/Specification/road-map.jpg)
+- [RoadMap in Miro](https://miro.com/app/board/uXjVNn2y9Fg=/)
+- [Epic's draft](https://github.com/mar1k163/Hydra-Project/blob/Specification/epic_draft.md)
