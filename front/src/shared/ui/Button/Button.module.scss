@@ -1,0 +1,29 @@
+.button {
+    cursor: pointer;
+    color: var(--btn-color);
+}
+
+.clear {
+    background: none;
+    border: none;
+    color: var(--btn-color);
+}
+.clients_card {
+    width: 290px;
+    height: 100px;
+    background: white;
+    border: 1px solid blue;
+}
+.create_client {
+    width: 169px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background: #0000006b;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+}

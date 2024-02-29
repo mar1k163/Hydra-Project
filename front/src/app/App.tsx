@@ -1,7 +1,7 @@
 import { AppRouter } from "./providers/routerProvider";
 export const App = () => {
     return (
-        <div className="app">
+        <div className="app light">
             <main className="content">
                 <AppRouter />
             </main>

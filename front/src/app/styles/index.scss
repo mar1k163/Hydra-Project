@@ -1,1 +1,18 @@
 @import "./reset.scss";
+@import "./variables/global.scss";
+
+body {
+    font: var(--font-m);
+    color: var(--primary-color);
+}
+
+.app {
+    background: var(--bg-color);
+    min-height: 100vh;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+}
