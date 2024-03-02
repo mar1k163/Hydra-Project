@@ -9,7 +9,7 @@ export const AuthByLoginForm = () => {
                     <input type="text" placeholder="Введите ваш email" />
                     <input type="text" placeholder="Введите ваш пароль" />
                 </form>
-                <button>Войти</button>
+                <button className={styles.btn}>Войти</button>
             </div>
         </div>
     );

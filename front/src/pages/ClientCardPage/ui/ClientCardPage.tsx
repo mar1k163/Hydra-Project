@@ -7,7 +7,7 @@ export const ClientCardPage = () => {
     return (
         <>
             <Header isClient={true} />
-            <PageTitle title="Карточка клиента" />
+            <PageTitle title="Карточка клиента" url="/dashboard" />
             <ClientCardContent />
         </>
     );

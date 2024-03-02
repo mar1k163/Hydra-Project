@@ -84,9 +84,9 @@ export const CreateClientForm = (props: CreateClientFormProps) => {
                     />
                 </div>
             </div>
-            <div className={styles.button}>
+            <div className={styles.buttons}>
                 <Button
-                    className={styles.button_create}
+                    className={styles.buttons_create}
                     onClick={() => {
                         console.log("sozdano");
                     }}

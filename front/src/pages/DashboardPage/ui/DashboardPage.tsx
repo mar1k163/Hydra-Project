@@ -6,7 +6,7 @@ export const DashboardPage = () => {
     return (
         <>
             <Header isClient={false} />
-            <PageTitle title="Клиенты" />
+            <PageTitle title="Клиенты" url="/signin" />
             <ClientsContent />
         </>
     );
