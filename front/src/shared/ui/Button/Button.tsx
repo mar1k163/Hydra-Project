@@ -1,4 +1,4 @@
-import React, { type ButtonHTMLAttributes, type FC } from "react";
+import { type ButtonHTMLAttributes, type FC } from "react";
 import styles from "./Button.module.scss";
 
 export enum ButtonTheme {

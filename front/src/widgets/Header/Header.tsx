@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Header.module.scss";
 import { Logo } from "widgets/Logo/Logo";
 export const Header = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Logo.module.scss";
 import HydraIcon from "shared/assets/icons/icon.png";
 
