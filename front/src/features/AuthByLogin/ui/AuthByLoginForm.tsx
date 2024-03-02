@@ -1,6 +1,5 @@
 import styles from "./AuthByLoginForm.module.scss";
 import { Logo } from "widgets/Logo/Logo";
-
 export const AuthByLoginForm = () => {
     return (
         <div className={styles.signinForm}>
