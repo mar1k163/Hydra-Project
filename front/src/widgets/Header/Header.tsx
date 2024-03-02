@@ -1,7 +1,12 @@
 import styles from "./Header.module.scss";
 import { Logo } from "widgets/Logo/Logo";
-export const Header = () => {
-    const isClient = false;
+
+interface HeaderProps {
+    isClient: boolean;
+}
+export const Header = (props: HeaderProps) => {
+    const { isClient } = props;
+
     return (
         <div className={styles.header}>
             <Logo width={350} height={150} />

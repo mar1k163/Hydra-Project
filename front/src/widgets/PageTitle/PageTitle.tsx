@@ -1,10 +1,15 @@
 import styles from "./PageTitle.module.scss";
 import ArrowIcon from "shared/assets/icons/arrow.svg?react";
-export const PageTitle = () => {
+
+interface PageTitleProps {
+    title: string;
+}
+export const PageTitle = (props: PageTitleProps) => {
+    const { title } = props;
     return (
         <div className={styles.PageTitle}>
             <ArrowIcon />
-            <p>Клиенты</p>
+            <p>{title}</p>
         </div>
     );
 };

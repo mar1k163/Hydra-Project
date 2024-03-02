@@ -5,8 +5,8 @@ import { PageTitle } from "widgets/PageTitle/PageTitle";
 export const DashboardPage = () => {
     return (
         <>
-            <Header />
-            <PageTitle />
+            <Header isClient={false} />
+            <PageTitle title="Клиенты" />
             <ClientsContent />
         </>
     );
