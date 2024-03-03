@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./ClientsItem.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-export const ClientsItem = () => {
+import { IClient } from "entities/Clients/model/types/ClientsTypes";
+export const ClientsItem = (props: IClient) => {
+    const { id, name, otchestvo, familiya } = props;
     const navigate = useNavigate();
 
     const handleNavigate = () => {
         // Переход по указанному URL
-        navigate("/dashboard/client/123123");
+        navigate(`/dashboard/client/${id}`);
     };
     return (
         <Button
@@ -14,7 +16,9 @@ export const ClientsItem = () => {
             className={styles.client}
             onClick={handleNavigate}
         >
-            <span>Иванов Иван Иванович</span>
+            <span>
+                {familiya} {name} {otchestvo}
+            </span>
         </Button>
     );
 };
