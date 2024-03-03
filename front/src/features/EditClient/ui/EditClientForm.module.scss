@@ -1,0 +1,48 @@
+.createClientForm {
+    width: 810px;
+    height: 500px;
+    background: #ad9d9d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.field {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    &_title {
+    }
+    &_input {
+        width: 100%;
+        height: 30px;
+        background: #c4c4c4;
+        border: none;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    &_create {
+        width: 130px;
+        height: 29px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        background: #c4c4c4;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+}
