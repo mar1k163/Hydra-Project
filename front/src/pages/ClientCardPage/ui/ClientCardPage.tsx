@@ -1,5 +1,4 @@
-// ClientCardPage.tsx
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "widgets/Header/Header";
 import { PageTitle } from "widgets/PageTitle/PageTitle";

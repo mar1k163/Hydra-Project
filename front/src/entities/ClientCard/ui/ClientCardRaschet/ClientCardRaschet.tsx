@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ClientCardRaschet.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import CopyIcon from "shared/assets/icons/Copy.svg?react";

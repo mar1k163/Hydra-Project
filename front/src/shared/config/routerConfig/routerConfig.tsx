@@ -1,4 +1,6 @@
 import { ClientCardPage } from "pages/ClientCardPage";
+import { CreateFoundationPage } from "pages/CreateFoundationPage";
+import CreateFramePage from "pages/CreateFramePage/ui/CreateFramePage";
 import { DashboardPage } from "pages/DashboardPage";
 import { MainPage } from "pages/MainPage";
 import { SigninPage } from "pages/SigninPage";
@@ -9,6 +11,8 @@ export enum AppRoutes {
     SIGNIN = "signin",
     DASHBOARD = "dashboard",
     CLIENT = "client",
+    FOUNDATION = "foundation",
+    FRAME = "frame",
 }
 
 export const RouterPath: Record<AppRoutes, string> = {
@@ -16,6 +20,8 @@ export const RouterPath: Record<AppRoutes, string> = {
     [AppRoutes.SIGNIN]: "/signin",
     [AppRoutes.DASHBOARD]: "/dashboard",
     [AppRoutes.CLIENT]: "/dashboard/client/:id",
+    [AppRoutes.FOUNDATION]: "/dashboard/client/:id/foundation",
+    [AppRoutes.FRAME]: "/dashboard/client/:id/frame",
 };
 
 export const RoutesConfig: Record<AppRoutes, RouteProps> = {
@@ -34,5 +40,13 @@ export const RoutesConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.CLIENT]: {
         path: RouterPath.client,
         element: <ClientCardPage />,
+    },
+    [AppRoutes.FOUNDATION]: {
+        path: RouterPath.foundation,
+        element: <CreateFoundationPage />,
+    },
+    [AppRoutes.FRAME]: {
+        path: RouterPath.frame,
+        element: <CreateFramePage />,
     },
 };

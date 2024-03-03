@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./ClientCardContent.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { ClientCardRaschet } from "../ClientCardRaschet/ClientCardRaschet";
+import { InfoWindow } from "widgets/InfoWindow/InfoWindow";
+import { RaschetVariables } from "../RaschetVariables/RaschetVariables";
 
 export const ClientCardContent = () => {
     const test = [
@@ -25,14 +27,25 @@ export const ClientCardContent = () => {
         },
         // Добавьте другие записи, если необходимо
     ];
+
+    const [raschetOpened, setRaschetOpened] = React.useState(false);
+    const handleraschetOpened = (newIsOpened: boolean) => {
+        setRaschetOpened(newIsOpened);
+    };
     return (
         <div className={styles.clients}>
             <Button
                 theme={ButtonTheme.CREATE_CLIENT}
                 className={styles.btn_create}
+                onClick={() => setRaschetOpened(!raschetOpened)}
             >
                 Создать расчет
             </Button>
+            {raschetOpened && (
+                <InfoWindow className={styles.clients_create}>
+                    <RaschetVariables isClosed={handleraschetOpened} />
+                </InfoWindow>
+            )}
             <div className={styles.rascheti}>
                 {test.map((ras) => (
                     <ClientCardRaschet
