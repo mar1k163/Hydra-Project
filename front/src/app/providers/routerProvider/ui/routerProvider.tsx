@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { RoutesConfig } from "shared/config/routerConfig/routerConfig";
+import { Layout } from "shared/ui/Layout/Layout";
 import { PageLoader } from "widgets/PageLoader/PageLoader";
 export const AppRouter = () => (
     <Suspense fallback={""}>
@@ -11,7 +12,7 @@ export const AppRouter = () => (
                     path={path}
                     element={
                         <Suspense fallback={<PageLoader />}>
-                            <div className="wrapper">{element}</div>
+                            <Layout>{element}</Layout>
                         </Suspense>
                     }
                 />
