@@ -1,17 +1,13 @@
 import Input from "shared/ui/Input/Input";
 import styles from "./EditClientForm.module.scss";
 import React, { useContext } from "react";
-import { Button } from "shared/ui/Button/Button";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { ClientContext } from "app/providers/userContext/userContext";
+import { EditClientFormProps } from "../model/types/EditClientFormType";
 
-interface CreateClientFormProps {
-    isOpen: boolean;
-}
-
-export const EditClientForm = (props: CreateClientFormProps) => {
-    const { isOpen } = props;
+export const EditClientForm = (props: EditClientFormProps) => {
+    const { isOpen, onClose } = props;
     const Client = useContext(ClientContext);
-
     const [familiyaValue, setFamiliyaValue] = React.useState(Client.familiya);
     const [nameValue, setNameValue] = React.useState(Client.name);
     const [otchestvoValue, setOtchestvoValue] = React.useState(
@@ -40,7 +36,11 @@ export const EditClientForm = (props: CreateClientFormProps) => {
     return (
         <div className={styles.createClientForm}>
             <div className={styles.fields}>
-                <div className={styles.field}>
+                <div
+                    className={`${styles.field} ${
+                        clientEditing ? styles.active : ""
+                    }`}
+                >
                     <span className={styles.field_title}>Фамилия</span>
                     <Input
                         value={familiyaValue}
@@ -49,7 +49,11 @@ export const EditClientForm = (props: CreateClientFormProps) => {
                         disabled={!clientEditing}
                     />
                 </div>
-                <div className={styles.field}>
+                <div
+                    className={`${styles.field} ${
+                        clientEditing ? styles.active : ""
+                    }`}
+                >
                     <span className={styles.field_title}>Имя</span>
                     <Input
                         value={nameValue}
@@ -58,7 +62,11 @@ export const EditClientForm = (props: CreateClientFormProps) => {
                         disabled={!clientEditing}
                     />
                 </div>
-                <div className={styles.field}>
+                <div
+                    className={`${styles.field} ${
+                        clientEditing ? styles.active : ""
+                    }`}
+                >
                     <span className={styles.field_title}>Отчество</span>
                     <Input
                         value={otchestvoValue}
@@ -67,7 +75,11 @@ export const EditClientForm = (props: CreateClientFormProps) => {
                         disabled={!clientEditing}
                     />
                 </div>
-                <div className={styles.field}>
+                <div
+                    className={`${styles.field} ${
+                        clientEditing ? styles.active : ""
+                    }`}
+                >
                     <span className={styles.field_title}>Телефон</span>
                     <Input
                         value={phoneValue}
@@ -77,7 +89,11 @@ export const EditClientForm = (props: CreateClientFormProps) => {
                         disabled={!clientEditing}
                     />
                 </div>
-                <div className={styles.field}>
+                <div
+                    className={`${styles.field} ${
+                        clientEditing ? styles.active : ""
+                    }`}
+                >
                     <span className={styles.field_title}>E-mail</span>
                     <Input
                         value={emailValue}
@@ -87,7 +103,11 @@ export const EditClientForm = (props: CreateClientFormProps) => {
                         disabled={!clientEditing}
                     />
                 </div>
-                <div className={styles.field}>
+                <div
+                    className={`${styles.field} ${
+                        clientEditing ? styles.active : ""
+                    }`}
+                >
                     <span className={styles.field_title}>Адрес</span>
                     <Input
                         value={addressValue}
@@ -98,19 +118,31 @@ export const EditClientForm = (props: CreateClientFormProps) => {
                 </div>
             </div>
             <div className={styles.buttons}>
+                {clientEditing ? (
+                    <Button
+                        theme={ButtonTheme.CREATE_CLIENT}
+                        className={styles.buttons_create}
+                        onClick={() => {
+                            setClientEditing(false);
+                        }}
+                    >
+                        Отмена
+                    </Button>
+                ) : (
+                    <Button
+                        theme={ButtonTheme.CREATE_CLIENT}
+                        className={styles.buttons_create}
+                        onClick={() => {
+                            setClientEditing(true);
+                        }}
+                    >
+                        Редактировать
+                    </Button>
+                )}
                 <Button
+                    theme={ButtonTheme.CREATE_CLIENT}
                     className={styles.buttons_create}
-                    onClick={() => {
-                        setClientEditing(true);
-                    }}
-                >
-                    Редактировать
-                </Button>
-                <Button
-                    className={styles.buttons_create}
-                    onClick={() => {
-                        console.log("sozdano");
-                    }}
+                    onClick={onClose}
                 >
                     Сохранить
                 </Button>

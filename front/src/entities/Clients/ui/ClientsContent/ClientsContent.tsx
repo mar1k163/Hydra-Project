@@ -22,7 +22,10 @@ export const ClientsContent = () => {
                 isOpen={createClientOpened}
                 onClose={() => setCreateClientOpened(false)}
             >
-                <CreateClientForm isOpen={createClientOpened} />
+                <CreateClientForm
+                    isOpen={createClientOpened}
+                    onClose={() => setCreateClientOpened(false)}
+                />
             </Modal>
             <div className={styles.clients_list}>
                 {Clients.map((client) => (

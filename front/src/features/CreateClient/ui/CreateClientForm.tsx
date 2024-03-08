@@ -1,14 +1,11 @@
 import Input from "shared/ui/Input/Input";
 import styles from "./CreateClientForm.module.scss";
 import React from "react";
-import { Button } from "shared/ui/Button/Button";
-
-interface CreateClientFormProps {
-    isOpen: boolean;
-}
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { CreateClientFormProps } from "../model/types/CreateClientFormType";
 
 export const CreateClientForm = (props: CreateClientFormProps) => {
-    const { isOpen } = props;
+    const { isOpen, onClose } = props;
     const [familiyaValue, setFamiliyaValue] = React.useState("");
     const [nameValue, setNameValue] = React.useState("");
     const [otchestvoValue, setOtchestvoValue] = React.useState("");
@@ -86,10 +83,9 @@ export const CreateClientForm = (props: CreateClientFormProps) => {
             </div>
             <div className={styles.buttons}>
                 <Button
+                    theme={ButtonTheme.CREATE_CLIENT}
                     className={styles.buttons_create}
-                    onClick={() => {
-                        console.log("sozdano");
-                    }}
+                    onClick={onClose}
                 >
                     Сохранить
                 </Button>

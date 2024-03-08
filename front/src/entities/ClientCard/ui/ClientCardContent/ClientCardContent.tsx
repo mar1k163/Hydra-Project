@@ -4,6 +4,7 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { ClientCardRaschet } from "../ClientCardRaschet/ClientCardRaschet";
 import { InfoWindow } from "widgets/InfoWindow/InfoWindow";
 import { RaschetVariables } from "../RaschetVariables/RaschetVariables";
+import { ClientCardNoRaschet } from "../ClientCardNoRaschet/ClientCardNoRaschet";
 
 export const ClientCardContent = () => {
     const test = [
@@ -25,7 +26,6 @@ export const ClientCardContent = () => {
             date: "2024.03.05",
             address: "ул. Образцовая, д. 789, кв. 12",
         },
-        // Добавьте другие записи, если необходимо
     ];
 
     const [raschetOpened, setRaschetOpened] = React.useState(false);
@@ -47,14 +47,20 @@ export const ClientCardContent = () => {
                 </InfoWindow>
             )}
             <div className={styles.rascheti}>
-                {test.map((ras) => (
-                    <ClientCardRaschet
-                        raschet_n={ras.raschet_n}
-                        date={ras.date}
-                        status={ras.status}
-                        address={ras.address}
-                    />
-                ))}
+                {test.length > 0 ? (
+                    <>
+                        {test.map((ras) => (
+                            <ClientCardRaschet
+                                raschet_n={ras.raschet_n}
+                                date={ras.date}
+                                status={ras.status}
+                                address={ras.address}
+                            />
+                        ))}
+                    </>
+                ) : (
+                    <ClientCardNoRaschet />
+                )}
             </div>
         </div>
     );

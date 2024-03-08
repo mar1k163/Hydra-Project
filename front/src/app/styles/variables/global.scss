@@ -10,13 +10,16 @@
     --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
     //colors
-    --bg-color: #f0f2f5;
+    --bg-color: #fff;
     --primary-color: rgb(0, 0, 0);
     --secondary-color: #222;
-
     --header-height: 160px;
+    --client-card-bg-color: #ffffff;
+    --client-card-color: rgb(0, 0, 0);
+    --client-card-border-color: black;
+    --raschet-border-color: gray;
     //modal
-    --modal-bg-color: #ad9d9d;
+    --modal-bg-color: #ffffff;
     --overlay-bg-color: rgb(0 0 0 / 60%);
     //index
     --modal-z-index: 10;

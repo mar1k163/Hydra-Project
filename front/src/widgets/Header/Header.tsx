@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import styles from "./Header.module.scss";
 import { Logo } from "widgets/Logo/Logo";
-import { ClientContext } from "app/providers/userContext/userContext";
+import {
+    ClientContext,
+    RabotnikContext,
+} from "app/providers/userContext/userContext";
 import { Modal } from "shared/ui/Modal/Modal";
 import { EditClientForm } from "features/EditClient";
 
@@ -12,7 +15,7 @@ export const Header = (props: HeaderProps) => {
     const { isClient } = props;
     const Client = useContext(ClientContext);
     const [editClientOpened, setEditClientOpened] = React.useState(false);
-
+    const Rabotnik = useContext(RabotnikContext);
     return (
         <>
             <div className={styles.header}>
@@ -41,13 +44,18 @@ export const Header = (props: HeaderProps) => {
                             isOpen={editClientOpened}
                             onClose={() => setEditClientOpened(false)}
                         >
-                            <EditClientForm isOpen={editClientOpened} />
+                            <EditClientForm
+                                isOpen={editClientOpened}
+                                onClose={() => setEditClientOpened(false)}
+                            />
                         </Modal>
                     </>
                 )}
                 <div className={styles.employee}>
-                    <span className={styles.employee_name}>Имя Фамилия</span>
-                    <span className={styles.employee_pos}>Должность</span>
+                    <span className={styles.employee_name}>
+                        {Rabotnik.name} {Rabotnik.familiya}
+                    </span>
+                    <span className={styles.employee_pos}>{Rabotnik.rank}</span>
                 </div>
             </div>
         </>

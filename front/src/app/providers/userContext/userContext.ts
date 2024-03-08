@@ -101,7 +101,17 @@ const Clients: UserContextProps[] = [
         email: "test@mail.ru",
     },
 ];
-
+interface RabotnikProps {
+    name: string;
+    familiya: string;
+    rank: string;
+}
+const Rabotnik: RabotnikProps = {
+    name: "Юрий",
+    familiya: "Алышев",
+    rank: "Менеджер по продажам",
+};
 export const UserContext = createContext<UserContextProps[]>(Clients);
 
 export const ClientContext = createContext<UserContextProps | null>(null);
+export const RabotnikContext = createContext<RabotnikProps | null>(Rabotnik);

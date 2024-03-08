@@ -1,5 +1,5 @@
 import styles from "./RaschetVariables.module.scss";
-import { Button } from "shared/ui/Button/Button";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import HouseIcon from "shared/assets/icons/house.svg?react";
 import FoundationIcon from "shared/assets/icons/foundation.svg?react";
 import RoofIcon from "shared/assets/icons/roof.svg?react";
@@ -26,18 +26,20 @@ export const RaschetVariables = (props: RaschetVariablesProps) => {
                 <Button
                     className={styles.variable}
                     onClick={() => handleNavigate("frame")}
+                    theme={ButtonTheme.CLEAR}
                 >
                     <HouseIcon />
                     <span>Каркас</span>
                 </Button>
                 <Button
+                    theme={ButtonTheme.CLEAR}
                     className={styles.variable}
                     onClick={() => handleNavigate("foundation")}
                 >
                     <FoundationIcon />
                     <span>Фундамент</span>
                 </Button>
-                <Button className={styles.variable}>
+                <Button className={styles.variable} theme={ButtonTheme.CLEAR}>
                     <RoofIcon />
                     <span>Крыша</span>
                 </Button>

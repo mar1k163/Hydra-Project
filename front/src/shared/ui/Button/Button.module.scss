@@ -11,19 +11,27 @@
 .clients_card {
     width: 290px;
     height: 100px;
-    background: white;
-    border: 1px solid blue;
+    background: var(--client-card-bg-color);
+    border: 1px solid var(--client-card-border-color);
+    border-radius: 7px;
+    color: var(--client-card-color);
+    &:hover {
+        box-shadow: 0 0 2px var(--secondary-color);
+    }
 }
 .create_client {
     width: 169px;
     height: 40px;
-    border-radius: 5px;
-    border: none;
-    background: #0000006b;
-
+    border-radius: 6px;
+    border: 1px solid var(--client-card-border-color);
+    background: var(--client-card-bg-color);
+    color: var(--client-card-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
     letter-spacing: 0em;
     text-align: center;
+    &:hover {
+        box-shadow: 0 0 2px var(--secondary-color);
+    }
 }
