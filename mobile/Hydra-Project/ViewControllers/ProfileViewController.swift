@@ -60,7 +60,7 @@ private extension ProfileViewController {
         addCalculationButton = UIBarButtonItem(title: "Добавить расчет", style: .plain, target: self, action: #selector(addCalculationButtonPressend))
         navigationItem.rightBarButtonItem = addCalculationButton
         
-        signOutButton = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(signOutButtonPressend))
+        signOutButton = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(signOutButtonPressend))
         navigationItem.leftBarButtonItem = signOutButton
     }
 }

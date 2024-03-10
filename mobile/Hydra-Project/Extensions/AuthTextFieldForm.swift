@@ -14,6 +14,7 @@ class AuthTextFieldForm: UITextField {
         font = .mainFont20()
         borderStyle = .none
         translatesAutoresizingMaskIntoConstraints = false
+        placeholder = placeholderText
         
         var bottomView = UIView()
         bottomView = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))

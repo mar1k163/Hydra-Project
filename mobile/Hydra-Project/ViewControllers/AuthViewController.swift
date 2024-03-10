@@ -31,9 +31,7 @@ final class AuthViewController: UIViewController {
         return button
     }()
     
-//    private let mainTabBar = MainTabBarController()
     private let registrationVC = UINavigationController(rootViewController: RegistrationViewController())
-//    private let adminVC = AdminViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

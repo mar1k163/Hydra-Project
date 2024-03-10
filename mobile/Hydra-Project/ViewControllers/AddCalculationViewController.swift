@@ -15,7 +15,9 @@ final class AddCalculationViewController: UIViewController {
     
     private let stackView = UIStackView()
     
-    private var signOutButton = UIBarButtonItem(title: "Выйти", style: .plain, target: AddCalculationViewController.self, action: #selector(singOutButtonPressed))
+    private var signOutButton = UIBarButtonItem()
+    
+    private let frameVC = UINavigationController(rootViewController: FrameViewController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,12 @@ final class AddCalculationViewController: UIViewController {
     private func singOutButtonPressed() {
         dismiss(animated: true)
     }
+    
+    @objc
+    private func frameButtonPressed() {
+        frameVC.modalPresentationStyle = .fullScreen
+        present(frameVC, animated: true)
+    }
 }
 
 //MARK: Setting view
@@ -37,8 +45,11 @@ private extension AddCalculationViewController {
         view.backgroundColor = .white
         
         title = "Выбор конструктивного элемента"
+        signOutButton = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(singOutButtonPressed))
         signOutButton.tintColor = .mainRed()
         navigationItem.leftBarButtonItem = signOutButton
+        
+        frameButton.addTarget(self, action: #selector(frameButtonPressed), for: .touchUpInside)
     }
 }
 

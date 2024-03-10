@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2C72132B91C332007AC272 /* FrameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C72122B91C332007AC272 /* FrameViewController.swift */; };
 		2DA0C7032B8B785B001C4337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0C7022B8B785B001C4337 /* AppDelegate.swift */; };
 		2DA0C7052B8B785B001C4337 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0C7042B8B785B001C4337 /* SceneDelegate.swift */; };
 		2DA0C70C2B8B785D001C4337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA0C70B2B8B785D001C4337 /* Assets.xcassets */; };
@@ -22,9 +23,12 @@
 		2DBF87812B8C098A00C1E150 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF87802B8C098A00C1E150 /* AddUserViewController.swift */; };
 		2DBF87832B8C148F00C1E150 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF87822B8C148F00C1E150 /* ProfileViewController.swift */; };
 		2DBF87852B8C182A00C1E150 /* AddCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF87842B8C182A00C1E150 /* AddCalculationViewController.swift */; };
+		2DC80C5C2B9E74EA00DE846D /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC80C5B2B9E74EA00DE846D /* DatabaseService.swift */; };
+		2DC80C5E2B9E756600DE846D /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC80C5D2B9E756600DE846D /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D2C72122B91C332007AC272 /* FrameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameViewController.swift; sourceTree = "<group>"; };
 		2DA0C6FF2B8B785B001C4337 /* Hydra-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hydra-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA0C7022B8B785B001C4337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DA0C7042B8B785B001C4337 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		2DBF87802B8C098A00C1E150 /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		2DBF87822B8C148F00C1E150 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2DBF87842B8C182A00C1E150 /* AddCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalculationViewController.swift; sourceTree = "<group>"; };
+		2DC80C5B2B9E74EA00DE846D /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		2DC80C5D2B9E756600DE846D /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 		2DA0C7012B8B785B001C4337 /* Hydra-Project */ = {
 			isa = PBXGroup;
 			children = (
+				2DC80C5A2B9E74C300DE846D /* Service */,
 				2DA0C71E2B8B7A7B001C4337 /* Extensions */,
 				2DA0C7192B8B79F9001C4337 /* ViewControllers */,
 				2DA0C7162B8B797E001C4337 /* SupportingFiles */,
@@ -118,6 +125,7 @@
 				2DBF87802B8C098A00C1E150 /* AddUserViewController.swift */,
 				2DBF87822B8C148F00C1E150 /* ProfileViewController.swift */,
 				2DBF87842B8C182A00C1E150 /* AddCalculationViewController.swift */,
+				2D2C72122B91C332007AC272 /* FrameViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -132,6 +140,15 @@
 				2DA0C7222B8B7AD1001C4337 /* UILabel + Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2DC80C5A2B9E74C300DE846D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2DC80C5B2B9E74EA00DE846D /* DatabaseService.swift */,
+				2DC80C5D2B9E756600DE846D /* StorageManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,13 +227,16 @@
 				2DA0C7272B8B7AD2001C4337 /* UILabel + Extension.swift in Sources */,
 				2DA0C71D2B8B7A70001C4337 /* RegistrationViewController.swift in Sources */,
 				2DA0C7052B8B785B001C4337 /* SceneDelegate.swift in Sources */,
+				2DC80C5C2B9E74EA00DE846D /* DatabaseService.swift in Sources */,
 				2DBF87832B8C148F00C1E150 /* ProfileViewController.swift in Sources */,
 				2DA0C7282B8B7AD2001C4337 /* UIButton + Extension.swift in Sources */,
 				2DA0C7242B8B7AD1001C4337 /* UIColor + Extension.swift in Sources */,
 				2DBF877F2B8C02C500C1E150 /* UsersViewController.swift in Sources */,
+				2D2C72132B91C332007AC272 /* FrameViewController.swift in Sources */,
 				2DA0C7262B8B7AD2001C4337 /* UIFont + Extension.swift in Sources */,
 				2DBF87852B8C182A00C1E150 /* AddCalculationViewController.swift in Sources */,
 				2DA0C7252B8B7AD2001C4337 /* AuthTextFieldForm.swift in Sources */,
+				2DC80C5E2B9E756600DE846D /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
