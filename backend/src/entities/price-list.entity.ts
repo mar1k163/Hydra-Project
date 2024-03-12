@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { MaterialCharacteristic } from '../MaterialCharacteristic/material-characteristic.entity';
+import { MaterialCharacteristic } from './material-characteristic.entity';
 
 @Entity()
 export class PriceList {
