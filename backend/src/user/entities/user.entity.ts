@@ -1,16 +1,45 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { CustomersEntity } from "src/customers/entities/customer.entity";
+import { UserStatusEntity } from "src/user-status/entities/user-status.entity";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
-@Entity("users")
+@Entity("user")
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column("varchar", { length: 100 })
+  last_name: string;
+
+  @Column("varchar", { length: 100 })
+  first_name: string;
+
+  @Column("varchar", { length: 100 })
+  second_name: string;
+
+  @Column("int")
+  phone: number;
+
+  @Column("varchar", { length: 100 })
   email: string;
+
+  @Column()
+  login: string;
 
   @Column()
   password: string;
 
-  @Column()
-  fullName: string;
+  @ManyToOne((type) => UserStatusEntity, (status_name) => status_name.user)
+  @JoinColumn({ name: "status" })
+  status: UserStatusEntity[];
+
+  @OneToMany((type) => CustomersEntity, (cust) => cust.user)
+  @JoinColumn({ name: "Customer_id" })
+  customers: CustomersEntity[];
 }
