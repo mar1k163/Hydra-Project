@@ -11,7 +11,7 @@ export const Logo = (props: LogoProps) => {
     return (
         <div className={styles.logo} style={{ width: width, height: height }}>
             <img src={HydraIcon} alt="" />
-            <span>Hydra</span>
+            <span>ГидраСтройРесурс</span>
         </div>
     );
 };
