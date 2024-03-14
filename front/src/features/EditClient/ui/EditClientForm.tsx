@@ -123,7 +123,10 @@ export const EditClientForm = (props: EditClientFormProps) => {
                         theme={ButtonTheme.CREATE_CLIENT}
                         className={styles.buttons_create}
                         onClick={() => {
-                            setClientEditing(false);
+                            {
+                                setClientEditing(false);
+                                resetForm;
+                            }
                         }}
                     >
                         Отмена
