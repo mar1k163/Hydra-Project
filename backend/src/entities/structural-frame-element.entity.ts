@@ -6,5 +6,17 @@ export class StructuralFrameElement {
     id: number;
 
     @Column()
-    name: string;
+    results_id: number;
+
+    @Column()
+    amount_floor: number;
+
+    @Column()
+    floor_number: number;
+
+    @Column()
+    floor_height: number;
+
+    @Column({ type: 'float' })
+    perimeter_of_external_walls: number;
 }
