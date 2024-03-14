@@ -9,11 +9,11 @@ export class Material {
     name: string;
 
     @Column()
-    materialCharacteristicId: number;
+    material_characteristics_id: number;
 
-    @Column()
-    materialType: string;
+    @Column({ nullable: true })
+    material_type: string;
 
-    @Column()
-    constructionElementType: string;
+    @Column({ nullable: true })
+    structural_element_type: string;
 }

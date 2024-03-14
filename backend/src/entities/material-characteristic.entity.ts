@@ -1,28 +1,28 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class MaterialCharacteristic {
+export class MaterialCharacteristics {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => MaterialCharacteristic)
-    material: MaterialCharacteristic;
+    @Column()
+    name: string;
 
     @Column()
-    width: number;
+    measurement_unit_id: number;
 
     @Column()
-    thickness: number;
+    materials_id: number;
 
-    @Column()
+    @Column({ type: 'float', nullable: true })
     length: number;
 
-    @Column()
+    @Column({ type: 'float', nullable: true })
+    width: number;
+
+    @Column({ type: 'float', nullable: true })
+    thickness: number;
+
+    @Column({ type: 'float', nullable: true })
     volume: number;
-
-    @Column()
-    materialType: string;
-
-    @Column()
-    constructionElementType: string;
 }
