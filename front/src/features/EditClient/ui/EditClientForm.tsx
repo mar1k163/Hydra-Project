@@ -26,7 +26,10 @@ export const EditClientForm = (props: EditClientFormProps) => {
         setAddressValue(Client.address);
         setClientEditing(false);
     };
-
+    const onCLickCancel = () => {
+        setClientEditing(false);
+        resetForm();
+    };
     React.useEffect(() => {
         if (isOpen) {
             resetForm();
@@ -122,12 +125,7 @@ export const EditClientForm = (props: EditClientFormProps) => {
                     <Button
                         theme={ButtonTheme.CREATE_CLIENT}
                         className={styles.buttons_create}
-                        onClick={() => {
-                            {
-                                setClientEditing(false);
-                                resetForm;
-                            }
-                        }}
+                        onClick={onCLickCancel}
                     >
                         Отмена
                     </Button>
