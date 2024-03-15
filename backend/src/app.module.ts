@@ -26,11 +26,11 @@ import { UsersGroupEntity } from "./users_group/entities/users_group.entity";
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: "postgres",
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT) || 5432,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: "cornelius.db.elephantsql.com",
+      port: 5432,
+      username: "jioacjwx",
+      password: "Hq0iowvcTmEAGgYc6dVDviND_KzzhY98",
+      database: "jioacjwx",
       entities: [
         UserEntity,
         CalculationEntity,

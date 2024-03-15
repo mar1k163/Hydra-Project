@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class MaterialCharacteristics {
+export class MaterialCharacteristic {
     @PrimaryGeneratedColumn()
     id: number;
 
