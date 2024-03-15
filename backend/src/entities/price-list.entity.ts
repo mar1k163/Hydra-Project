@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { MaterialCharacteristic } from './material-characteristic.entity';
+import { MaterialCharacteristics } from './material-characteristic.entity';
 
 @Entity()
 export class PriceList {
@@ -15,6 +15,6 @@ export class PriceList {
     @Column()
     date: Date;
 
-    @ManyToOne(() => MaterialCharacteristic)
-    materialCharacteristic: MaterialCharacteristic;
+    @ManyToOne(() => MaterialCharacteristics)
+    materialCharacteristic: MaterialCharacteristics;
 }
