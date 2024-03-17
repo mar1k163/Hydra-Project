@@ -1,15 +1,23 @@
-import { Injectable } from '@nestjs/common';
-import { CreateCalculationStateDto } from './dto/create-calculation_state.dto';
-import { UpdateCalculationStateDto } from './dto/update-calculation_state.dto';
+import { Injectable } from "@nestjs/common";
+import { CreateCalculationStateDto } from "./dto/create-calculation_state.dto";
+import { UpdateCalculationStateDto } from "./dto/update-calculation_state.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { CalculationStateEntity } from "./entities/calculation_state.entity";
 
 @Injectable()
 export class CalculationStateService {
+  constructor(
+    @InjectRepository(CalculationStateEntity)
+    private repository: Repository<CalculationStateEntity>
+  ) {}
+
   create(createCalculationStateDto: CreateCalculationStateDto) {
-    return 'This action adds a new calculationState';
+    return this.repository.save(createCalculationStateDto);
   }
 
   findAll() {
-    return `This action returns all calculationState`;
+    return this.repository.find();
   }
 
   findOne(id: number) {

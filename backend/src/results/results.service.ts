@@ -1,26 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import { CreateResultDto } from './dto/create-result.dto';
-import { UpdateResultDto } from './dto/update-result.dto';
+import { Injectable } from "@nestjs/common";
+import { CreateResultDto } from "./dto/create-result.dto";
+import { UpdateResultDto } from "./dto/update-result.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { ResultsEntity } from "./entities/result.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class ResultsService {
+  constructor(
+    @InjectRepository(ResultsEntity)
+    private repository: Repository<ResultsEntity>
+  ) {}
+
   create(createResultDto: CreateResultDto) {
-    return 'This action adds a new result';
+    return this.repository.save(createResultDto);
   }
 
   findAll() {
-    return `This action returns all results`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} result`;
-  }
-
-  update(id: number, updateResultDto: UpdateResultDto) {
-    return `This action updates a #${id} result`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} result`;
+    return this.repository.find();
   }
 }

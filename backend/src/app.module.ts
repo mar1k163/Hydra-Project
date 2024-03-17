@@ -20,6 +20,8 @@ import { ResultsEntity } from "./results/entities/result.entity";
 import { BasementEntity } from "./structural_element_basement/entities/structural_element_basement.entity";
 import { UserStatusEntity } from "./user-status/entities/user-status.entity";
 import { UsersGroupEntity } from "./users_group/entities/users_group.entity";
+import { UserUsergroupModule } from "./user_usergroup/user_usergroup.module";
+import { UserUsergroupEntity } from "./user_usergroup/entities/user_usergroup.entity";
 
 @Module({
   imports: [
@@ -40,6 +42,7 @@ import { UsersGroupEntity } from "./users_group/entities/users_group.entity";
         BasementEntity,
         UserStatusEntity,
         UsersGroupEntity,
+        UserUsergroupEntity,
       ],
       synchronize: true,
     }),
@@ -52,6 +55,7 @@ import { UsersGroupEntity } from "./users_group/entities/users_group.entity";
     UserStatusModule,
     UsersGroupModule,
     CalculationStateModule,
+    UserUsergroupModule,
   ],
   controllers: [AppController],
   providers: [AppService],

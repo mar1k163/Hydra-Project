@@ -1,5 +1,12 @@
+import { CalculationEntity } from "src/calculation/entities/calculation.entity";
 import { UserEntity } from "src/user/entities/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
 @Entity("customers")
 export class CustomersEntity {
@@ -26,4 +33,7 @@ export class CustomersEntity {
 
   @ManyToOne(() => UserEntity, (user) => user.customers)
   user: UserEntity;
+
+  @OneToMany(() => CalculationEntity, (calc) => calc.cust)
+  calc: CalculationEntity;
 }

@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserUsergroupEntity } from "src/user_usergroup/entities/user_usergroup.entity";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
 @Entity("users_group")
 export class UsersGroupEntity {
@@ -6,5 +13,8 @@ export class UsersGroupEntity {
   id: number;
 
   @Column("varchar", { length: 100 })
-  title: number;
+  title: string;
+
+  @OneToMany((type) => UserUsergroupEntity, (ugu) => ugu.group)
+  ugu: UserUsergroupEntity[];
 }

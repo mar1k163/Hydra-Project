@@ -1,26 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUsersGroupDto } from './dto/create-users_group.dto';
-import { UpdateUsersGroupDto } from './dto/update-users_group.dto';
+import { Injectable } from "@nestjs/common";
+import { CreateUsersGroupDto } from "./dto/create-users_group.dto";
+import { UpdateUsersGroupDto } from "./dto/update-users_group.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { UsersGroupEntity } from "./entities/users_group.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class UsersGroupService {
+  constructor(
+    @InjectRepository(UsersGroupEntity)
+    private repository: Repository<UsersGroupEntity>
+  ) {}
+
   create(createUsersGroupDto: CreateUsersGroupDto) {
-    return 'This action adds a new usersGroup';
+    return this.repository.save(createUsersGroupDto);
   }
 
   findAll() {
-    return `This action returns all usersGroup`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} usersGroup`;
-  }
-
-  update(id: number, updateUsersGroupDto: UpdateUsersGroupDto) {
-    return `This action updates a #${id} usersGroup`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} usersGroup`;
+    return this.repository.find();
   }
 }

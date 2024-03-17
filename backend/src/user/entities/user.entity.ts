@@ -1,5 +1,6 @@
 import { CustomersEntity } from "src/customers/entities/customer.entity";
 import { UserStatusEntity } from "src/user-status/entities/user-status.entity";
+import { UserUsergroupEntity } from "src/user_usergroup/entities/user_usergroup.entity";
 import {
   Column,
   Entity,
@@ -42,4 +43,7 @@ export class UserEntity {
   @OneToMany((type) => CustomersEntity, (cust) => cust.user)
   @JoinColumn({ name: "Customer_id" })
   customers: CustomersEntity[];
+
+  @OneToMany((type) => UserUsergroupEntity, (ugu) => ugu.user)
+  ugu: UserUsergroupEntity[];
 }

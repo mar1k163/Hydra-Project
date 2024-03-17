@@ -1,9 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { UsersGroupService } from './users_group.service';
-import { CreateUsersGroupDto } from './dto/create-users_group.dto';
-import { UpdateUsersGroupDto } from './dto/update-users_group.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from "@nestjs/common";
+import { UsersGroupService } from "./users_group.service";
+import { CreateUsersGroupDto } from "./dto/create-users_group.dto";
+import { UpdateUsersGroupDto } from "./dto/update-users_group.dto";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller('users-group')
+@Controller("users-group")
+@ApiTags("users-group")
 export class UsersGroupController {
   constructor(private readonly usersGroupService: UsersGroupService) {}
 
@@ -15,20 +25,5 @@ export class UsersGroupController {
   @Get()
   findAll() {
     return this.usersGroupService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersGroupService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUsersGroupDto: UpdateUsersGroupDto) {
-    return this.usersGroupService.update(+id, updateUsersGroupDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersGroupService.remove(+id);
   }
 }

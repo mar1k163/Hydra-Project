@@ -1,26 +1,34 @@
-import { Injectable } from '@nestjs/common';
-import { CreateCalculationDto } from './dto/create-calculation.dto';
-import { UpdateCalculationDto } from './dto/update-calculation.dto';
+import { Injectable } from "@nestjs/common";
+import { CreateCalculationDto } from "./dto/create-calculation.dto";
+import { UpdateCalculationDto } from "./dto/update-calculation.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { CalculationEntity } from "./entities/calculation.entity";
 
 @Injectable()
 export class CalculationService {
-  create(createCalculationDto: CreateCalculationDto) {
-    return 'This action adds a new calculation';
+  constructor(
+    @InjectRepository(CalculationEntity)
+    private repository: Repository<CalculationEntity>
+  ) {}
+
+  create(dto: CreateCalculationDto) {
+    return this.repository.save(dto);
   }
 
   findAll() {
-    return `This action returns all calculation`;
+    return this.repository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} calculation`;
+    return `This action returns a #${id} boardsList`;
   }
 
-  update(id: number, updateCalculationDto: UpdateCalculationDto) {
-    return `This action updates a #${id} calculation`;
+  update(id: number, dto: UpdateCalculationDto) {
+    return `This action updates a #${id} boardsList`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} calculation`;
+    return `This action removes a #${id} boardsList`;
   }
 }

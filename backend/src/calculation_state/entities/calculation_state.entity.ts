@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { CalculationEntity } from "src/calculation/entities/calculation.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("calculation_state")
 export class CalculationStateEntity {
@@ -7,4 +8,7 @@ export class CalculationStateEntity {
 
   @Column()
   state: string;
+
+  @OneToMany(() => CalculationEntity, (calc) => calc.state)
+  calc: CalculationEntity;
 }

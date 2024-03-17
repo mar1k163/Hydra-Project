@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ResultsEntity } from "src/results/entities/result.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("structural_element_basement")
 export class BasementEntity {
@@ -16,4 +17,7 @@ export class BasementEntity {
 
   @Column()
   concrete: string; //бетон
+
+  @ManyToOne((type) => ResultsEntity, (res) => res.calc)
+  res: ResultsEntity[];
 }
