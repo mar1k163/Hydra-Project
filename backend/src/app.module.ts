@@ -23,6 +23,10 @@ import { UsersGroupEntity } from "./users_group/entities/users_group.entity";
 import { UserUsergroupModule } from "./user_usergroup/user_usergroup.module";
 import { UserUsergroupEntity } from "./user_usergroup/entities/user_usergroup.entity";
 import { OpeningModule } from "./openings/opening.module"; 
+import { MaterialsModule } from './materials/materials.module';
+import { StructuralElementFrameModule } from './structural_element_frame/structural_element_frame.module';
+import { Materials } from './materials/entity/materials.entity';
+import { StructuralElementFrame } from './structural_element_frame/entity/structural_element_frame.entity';
 
 @Module({
   imports: [
@@ -44,6 +48,8 @@ import { OpeningModule } from "./openings/opening.module";
         UserStatusEntity,
         UsersGroupEntity,
         UserUsergroupEntity,
+        Materials,
+        StructuralElementFrame,
       ],
       synchronize: true,
     }),
@@ -58,6 +64,8 @@ import { OpeningModule } from "./openings/opening.module";
     CalculationStateModule,
     UserUsergroupModule,
     OpeningModule,
+    MaterialsModule,
+    StructuralElementFrameModule,
   ],
   controllers: [AppController],
   providers: [AppService],
