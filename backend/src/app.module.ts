@@ -22,6 +22,7 @@ import { UserStatusEntity } from "./user-status/entities/user-status.entity";
 import { UsersGroupEntity } from "./users_group/entities/users_group.entity";
 import { UserUsergroupModule } from "./user_usergroup/user_usergroup.module";
 import { UserUsergroupEntity } from "./user_usergroup/entities/user_usergroup.entity";
+import { OpeningModule } from "./openings/opening.module"; 
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { UserUsergroupEntity } from "./user_usergroup/entities/user_usergroup.en
     UsersGroupModule,
     CalculationStateModule,
     UserUsergroupModule,
+    OpeningModule,
   ],
   controllers: [AppController],
   providers: [AppService],
