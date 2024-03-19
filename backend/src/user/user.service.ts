@@ -15,8 +15,8 @@ export class UserService {
   async findById(id) {
     return this.repository.findOneBy({ id });
   }
-  async findByEmail(email) {
-    return this.repository.findOneBy({ email });
+  async findByLogin(login) {
+    return this.repository.findOneBy({ login });
   }
 
   create(dto: CreateUserDto) {
@@ -25,10 +25,6 @@ export class UserService {
 
   findAll() {
     return this.repository.find();
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} boardsList`;
   }
 
   update(id: number, dto: UpdateUserDto) {

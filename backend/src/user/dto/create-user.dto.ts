@@ -42,9 +42,4 @@ export class CreateUserDto {
     default: "1",
   })
   status: UserStatusEntity[];
-
-  @ApiProperty({
-    default: "1",
-  })
-  customers: CustomersEntity[];
 }
