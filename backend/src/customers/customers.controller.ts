@@ -23,8 +23,11 @@ export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
   @Post()
-  create(@UserId() userId: number) {
-    return this.customersService.create(userId);
+  create(
+    @Body() createCustomerDto: CreateCustomerDto,
+    @UserId() userId: number
+  ) {
+    return this.customersService.create(createCustomerDto, userId);
   }
 
   @Get("/all")

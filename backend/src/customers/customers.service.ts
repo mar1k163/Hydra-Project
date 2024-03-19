@@ -13,16 +13,18 @@ export class CustomersService {
     private repository: Repository<CustomersEntity>
   ) {}
 
-  create(userId: number) {
-    return this.repository.save({
-      firstname: "dan4ik",
-      lastname: "makarov",
-      secondname: "nikitich",
-      phone: 7812,
-      email: "den@mail.com",
-      addres: "cucuruznaya 17b",
-      user: { id: userId },
-    });
+  create(dto: CreateCustomerDto, userId: number): Promise<CustomersEntity> {
+    const { firstname, lastname, secondname, phone, email, addres } = dto;
+    const newCustomer = new CustomersEntity();
+    newCustomer.firstname = firstname;
+    newCustomer.lastname = lastname;
+    newCustomer.secondname = secondname;
+    newCustomer.addres = addres;
+    newCustomer.phone = phone;
+    newCustomer.email = email;
+    newCustomer.user = { id: userId } as any;
+
+    return this.repository.save(newCustomer);
   }
 
   findById(userId: number) {

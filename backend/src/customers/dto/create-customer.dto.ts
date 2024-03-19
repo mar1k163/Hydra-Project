@@ -32,9 +32,4 @@ export class CreateCustomerDto {
     default: "88888",
   })
   addres: string;
-
-  @ApiProperty({
-    default: "1",
-  })
-  userId: UserEntity;
 }
