@@ -27,6 +27,12 @@ import { MaterialsModule } from './materials/materials.module';
 import { StructuralElementFrameModule } from './structural_element_frame/structural_element_frame.module';
 import { Materials } from './materials/entity/materials.entity';
 import { StructuralElementFrame } from './structural_element_frame/entity/structural_element_frame.entity';
+import { PriceListsModule } from './price_list/price_list.module';
+import { PriceLists } from './price_list/entity/price_list.entity';
+import { MaterialCharacteristicsModule } from './material_characteristics/material_characteristics.module';
+import { MaterialCharacteristics } from './material_characteristics/entity/material_characteristics.entity';
+import { OpeningsInFrameModule } from './openings_in_frame/openings_in_frame.module';
+import { OpeningsInFrame } from './openings_in_frame/entity/openings_in_frame.entity';
 
 @Module({
   imports: [
@@ -50,6 +56,9 @@ import { StructuralElementFrame } from './structural_element_frame/entity/struct
         UserUsergroupEntity,
         Materials,
         StructuralElementFrame,
+        PriceLists,
+        MaterialCharacteristics,
+        OpeningsInFrame,
       ],
       synchronize: true,
     }),
@@ -66,6 +75,9 @@ import { StructuralElementFrame } from './structural_element_frame/entity/struct
     OpeningModule,
     MaterialsModule,
     StructuralElementFrameModule,
+    PriceListsModule,
+    MaterialCharacteristicsModule,
+    OpeningsInFrameModule,
   ],
   controllers: [AppController],
   providers: [AppService],
