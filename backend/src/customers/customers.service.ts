@@ -4,6 +4,7 @@ import { UpdateCustomerDto } from "./dto/update-customer.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CustomersEntity } from "./entities/customer.entity";
 import { Repository } from "typeorm";
+import { ApiProperty } from "@nestjs/swagger";
 
 @Injectable()
 export class CustomersService {
@@ -12,8 +13,23 @@ export class CustomersService {
     private repository: Repository<CustomersEntity>
   ) {}
 
-  create(createCustomerDto: CreateCustomerDto) {
-    return this.repository.save(createCustomerDto);
+  create(userId: number) {
+    return this.repository.save({
+      firstname: "dan4ik",
+      lastname: "makarov",
+      secondname: "nikitich",
+      phone: 7812,
+      email: "den@mail.com",
+      addres: "cucuruznaya 17b",
+      user: { id: userId },
+    });
+  }
+
+  findById(userId: number) {
+    const qb = this.repository.createQueryBuilder("file");
+
+    qb.where("file.userId = :userId", { userId });
+    return qb.getMany();
   }
 
   findAll() {

@@ -13,6 +13,7 @@ import { CreateCustomerDto } from "./dto/create-customer.dto";
 import { UpdateCustomerDto } from "./dto/update-customer.dto";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { JwtAuthGuard } from "src/auth/guards/jwt.guard";
+import { UserId } from "src/decorators/user-id.decorator";
 
 @Controller("customers")
 @UseGuards(JwtAuthGuard)
@@ -22,12 +23,17 @@ export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
   @Post()
-  create(@Body() createCustomerDto: CreateCustomerDto) {
-    return this.customersService.create(createCustomerDto);
+  create(@UserId() userId: number) {
+    return this.customersService.create(userId);
+  }
+
+  @Get("/all")
+  findAll() {
+    return this.customersService.findAll();
   }
 
   @Get()
-  findAll() {
-    return this.customersService.findAll();
+  getCustById(@UserId() userId: number) {
+    return this.customersService.findById(userId);
   }
 }

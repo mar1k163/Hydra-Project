@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { UserId } from "src/decorators/user-id.decorator";
 import { UserEntity } from "src/user/entities/user.entity";
 
 export class CreateCustomerDto {
