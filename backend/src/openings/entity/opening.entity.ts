@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { OpeningsInFrame } from "src/openings_in_frame/entity/openings_in_frame.entity";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
-@Entity()
+@Entity("opening")
 export class Opening {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,9 +9,12 @@ export class Opening {
   @Column()
   type: string;
 
-  @Column('float')
+  @Column("float")
   width: number;
 
-  @Column('float')
+  @Column("float")
   height: number;
+
+  @OneToMany((type) => OpeningsInFrame, (inframe) => inframe.openings)
+  inframe: OpeningsInFrame[];
 }
