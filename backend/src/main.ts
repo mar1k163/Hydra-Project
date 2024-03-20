@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: false });
 
   const config = new DocumentBuilder()
-    .setTitle("Cats example")
+    .setTitle("Hydra project")
     .setDescription("The cats API description")
     .setVersion("1.0")
     .addTag("cats")
@@ -22,6 +22,6 @@ async function bootstrap() {
 
   app.enableCors({ credentials: true, origin: true });
 
-  await app.listen(3000);
+  await app.listen(7777);
 }
 bootstrap();

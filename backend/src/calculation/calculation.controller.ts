@@ -26,4 +26,9 @@ export class CalculationController {
   findAll() {
     return this.calculationService.findAll();
   }
+
+  @Get(":id")
+  findById(@Param("id") id: string) {
+    return this.calculationService.findById(+id);
+  }
 }

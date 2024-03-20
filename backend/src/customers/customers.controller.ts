@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Req,
 } from "@nestjs/common";
 import { CustomersService } from "./customers.service";
 import { CreateCustomerDto } from "./dto/create-customer.dto";
@@ -14,6 +15,7 @@ import { UpdateCustomerDto } from "./dto/update-customer.dto";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { JwtAuthGuard } from "src/auth/guards/jwt.guard";
 import { UserId } from "src/decorators/user-id.decorator";
+import { request } from "http";
 
 @Controller("customers")
 @UseGuards(JwtAuthGuard)
@@ -38,5 +40,11 @@ export class CustomersController {
   @Get()
   getCustById(@UserId() userId: number) {
     return this.customersService.findById(userId);
+  }
+
+  @Patch("update")
+  update(@Body() updateCustomerDto: UpdateCustomerDto, @Req() request) {
+    const cust = request.cust;
+    return this.customersService.update(cust.id, updateCustomerDto);
   }
 }

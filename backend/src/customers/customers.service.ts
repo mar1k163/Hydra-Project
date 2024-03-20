@@ -43,7 +43,16 @@ export class CustomersService {
   }
 
   update(id: number, updateCustomerDto: UpdateCustomerDto) {
-    return `This action updates a #${id} customer`;
+    const { firstname, lastname, secondname, phone, email, addres } =
+      updateCustomerDto;
+    const newCustomer = new CustomersEntity();
+    newCustomer.firstname = firstname;
+    newCustomer.lastname = lastname;
+    newCustomer.secondname = secondname;
+    newCustomer.addres = addres;
+    newCustomer.phone = phone;
+    newCustomer.email = email;
+    return this.repository.update(id, updateCustomerDto);
   }
 
   remove(id: number) {

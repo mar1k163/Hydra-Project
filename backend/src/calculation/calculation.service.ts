@@ -20,6 +20,13 @@ export class CalculationService {
     return this.repository.find();
   }
 
+  findById(id: number) {
+    return this.repository
+      .createQueryBuilder("calculation")
+      .where("calculation.cust = :id", { id })
+      .getOne();
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} boardsList`;
   }
