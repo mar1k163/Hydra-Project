@@ -31,4 +31,9 @@ export class CalculationController {
   findById(@Param("id") id: string) {
     return this.calculationService.findById(+id);
   }
+
+  @Delete(":id")
+  remove(@Param("id") id: string) {
+    return this.calculationService.remove(+id);
+  }
 }

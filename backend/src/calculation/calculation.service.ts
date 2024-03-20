@@ -36,6 +36,6 @@ export class CalculationService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} boardsList`;
+    return this.repository.delete(id);
   }
 }

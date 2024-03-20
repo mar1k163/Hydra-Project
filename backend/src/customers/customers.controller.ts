@@ -42,9 +42,11 @@ export class CustomersController {
     return this.customersService.findById(userId);
   }
 
-  @Patch("update")
-  update(@Body() updateCustomerDto: UpdateCustomerDto, @Req() request) {
-    const cust = request.cust;
-    return this.customersService.update(cust.id, updateCustomerDto);
+  @Patch(":id")
+  update(
+    @Param("id") id: string,
+    @Body() updateCustomerDto: UpdateCustomerDto
+  ) {
+    return this.customersService.update(+id, updateCustomerDto);
   }
 }
