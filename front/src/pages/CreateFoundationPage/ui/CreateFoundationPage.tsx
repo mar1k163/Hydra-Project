@@ -6,7 +6,7 @@ export const CreateFoundationPage = () => {
     return (
         <>
             <Header isClient={true} />
-            <PageTitle title="Фундамент" url="/dashboard" />
+            <PageTitle title="Фундамент" route="/dashboard" />
             <CreateFoundationForm />
         </>
     );

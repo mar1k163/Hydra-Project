@@ -5,19 +5,15 @@ import { ClientsItem } from "../ClientItem/ClientsItem";
 import { Modal } from "shared/ui/Modal/Modal";
 import { CreateClientForm } from "features/CreateClient/ui/CreateClientForm";
 import { useClientStore } from "entities/Clients/model/store/ClientsStore";
-import { useClientCardStore } from "entities/ClientCard/model/store/ClientCardStore";
 export const ClientsContent = () => {
     const [createClientOpened, setCreateClientOpened] = React.useState(false);
     const clients = useClientStore((state) => state.clients);
     const fetchClients = useClientStore((state) => state.fetchClients);
     const isLoading = useClientStore((state) => state.isLoading);
-    const clearCalculations = useClientCardStore(
-        (state) => state.clearCalculations
-    );
+
     React.useEffect(() => {
         fetchClients();
-        clearCalculations();
-    }, [clearCalculations, fetchClients]);
+    }, [fetchClients]);
     return (
         <div className={styles.clients}>
             <Button

@@ -23,6 +23,8 @@ export const EditClientForm = (props: EditClientFormProps) => {
     const [emailValue, setEmailValue] = React.useState("");
     const [addressValue, setAddressValue] = React.useState("");
     const [clientEditing, setClientEditing] = React.useState(false);
+    console.log(id, lastname, firstname, secondname, phone, email, addres);
+
     const resetForm = () => {
         setFamiliyaValue("");
         setNameValue("");

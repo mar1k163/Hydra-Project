@@ -6,6 +6,8 @@ import { Calculation } from "entities/ClientCard/model/types/ClientCardType";
 
 export const ClientCardRaschet = (props: Calculation) => {
     const { id, addres_object_constractions, number, created_date } = props;
+    console.log(id);
+
     return (
         <div className={styles.raschet}>
             <div className={styles.raschet_info}>
