@@ -39,7 +39,7 @@ export class CustomersService {
       .createQueryBuilder("file")
       .where("file.userId = :userId", { userId })
       .andWhere("file.id = :id", { id })
-      .getMany();
+      .getOne();
   }
 
   findAll() {
