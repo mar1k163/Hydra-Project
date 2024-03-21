@@ -24,7 +24,7 @@ export class CalculationService {
     return this.repository
       .createQueryBuilder("calculation")
       .where("calculation.cust = :id", { id })
-      .getOne();
+      .getMany();
   }
 
   findOne(id: number) {
