@@ -38,8 +38,13 @@ export class CustomersController {
   }
 
   @Get()
-  getCustById(@UserId() userId: number) {
-    return this.customersService.findById(userId);
+  getCustByUserId(@UserId() userId: number) {
+    return this.customersService.findByUserId(userId);
+  }
+
+  @Get(":id")
+  getCustById(@UserId() userId: number, @Param("id") id: string) {
+    return this.customersService.findById(userId, +id);
   }
 
   @Patch(":id")

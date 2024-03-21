@@ -27,10 +27,18 @@ export class CustomersService {
     return this.repository.save(newCustomer);
   }
 
-  findById(userId: number) {
+  findByUserId(userId: number) {
     const qb = this.repository.createQueryBuilder("file");
 
     qb.where("file.userId = :userId", { userId });
+    return qb.getMany();
+  }
+
+  findById(userId: number, id: number) {
+    const qb = this.repository.createQueryBuilder("file");
+
+    qb.where("file.userId = :userId", { userId });
+    qb.andWhere("file.id = :id", { id });
     return qb.getMany();
   }
 
