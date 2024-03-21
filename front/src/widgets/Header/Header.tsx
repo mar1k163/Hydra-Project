@@ -1,26 +1,32 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./Header.module.scss";
 import { Logo } from "widgets/Logo/Logo";
-import {
-    ClientContext,
-    RabotnikContext,
-} from "app/providers/userContext/userContext";
 import { Modal } from "shared/ui/Modal/Modal";
 import { EditClientForm } from "features/EditClient";
+import { useUserStore } from "entities/User/model/store/UserStore";
+import { useParams } from "react-router-dom";
+import { useClientStore } from "entities/Clients/model/store/ClientsStore";
 
 interface HeaderProps {
     isClient: boolean;
 }
 export const Header = (props: HeaderProps) => {
+    const { id } = useParams();
     const { isClient } = props;
-    const Client = useContext(ClientContext);
+    const user = useUserStore((state) => state.user);
+    const client = useClientStore((state) => state.client);
+    const fetchClient = useClientStore((state) => state.fetchThisClient);
     const [editClientOpened, setEditClientOpened] = React.useState(false);
-    const Rabotnik = useContext(RabotnikContext);
+    React.useEffect(() => {
+        if (isClient) {
+            fetchClient(parseInt(id));
+        }
+    }, [fetchClient, id, isClient]);
     return (
         <>
             <div className={styles.header}>
                 <Logo width={350} height={150} />
-                {isClient && Client !== null && (
+                {isClient && client !== null && (
                     <>
                         <div
                             className={styles.client}
@@ -29,14 +35,14 @@ export const Header = (props: HeaderProps) => {
                             <p className={styles.client_title}>Клиент:</p>
                             <div className={styles.client_info}>
                                 <span className={styles.client_info_name}>
-                                    {Client.familiya} {Client.name}{" "}
-                                    {Client.otchestvo}
+                                    {client[0].firstname} {client[0].secondname}{" "}
+                                    {client[0].lastname}
                                 </span>
                                 <span className={styles.client_info_adress}>
-                                    {Client.address}
+                                    {client[0].addres}
                                 </span>
                                 <span className={styles.client_info_tel}>
-                                    {Client.phone}
+                                    {client[0].phone}
                                 </span>
                             </div>
                         </div>
@@ -45,6 +51,13 @@ export const Header = (props: HeaderProps) => {
                             onClose={() => setEditClientOpened(false)}
                         >
                             <EditClientForm
+                                id={client.id}
+                                lastname={client.lastname}
+                                firstname={client.firstname}
+                                secondname={client.secondname}
+                                addres={client.addres}
+                                phone={client.phone}
+                                email={client.email}
                                 isOpen={editClientOpened}
                                 onClose={() => setEditClientOpened(false)}
                             />
@@ -53,9 +66,9 @@ export const Header = (props: HeaderProps) => {
                 )}
                 <div className={styles.employee}>
                     <span className={styles.employee_name}>
-                        {Rabotnik.name} {Rabotnik.familiya}
+                        {user.first_name} {user.second_name} {user.last_name}
                     </span>
-                    <span className={styles.employee_pos}>{Rabotnik.rank}</span>
+                    <span className={styles.employee_pos}>Должность</span>
                 </div>
             </div>
         </>

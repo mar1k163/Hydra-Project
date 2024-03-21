@@ -2,55 +2,68 @@ import Input from "shared/ui/Input/Input";
 import styles from "./CreateClientForm.module.scss";
 import React from "react";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { CreateClientFormProps } from "../model/types/CreateClientFormType";
+import { CreateClientFormProps } from "../model/types/CreateClientType";
+import { useClientStore } from "entities/Clients/model/store/ClientsStore";
+import { CreateClientService } from "../model/services/CreateClientService";
 
 export const CreateClientForm = (props: CreateClientFormProps) => {
     const { isOpen, onClose } = props;
-    const [familiyaValue, setFamiliyaValue] = React.useState("");
-    const [nameValue, setNameValue] = React.useState("");
-    const [otchestvoValue, setOtchestvoValue] = React.useState("");
+    const [secondnameValue, setSecondnameValue] = React.useState("");
+    const [firstnameValue, setFirstnameValue] = React.useState("");
+    const [lastnameValue, setLastnameValue] = React.useState("");
     const [phoneValue, setPhoneValue] = React.useState("");
     const [emailValue, setEmailValue] = React.useState("");
-    const [addressValue, setAddressValue] = React.useState("");
+    const [addresValue, setAddresValue] = React.useState("");
+    const fetchClients = useClientStore((state) => state.fetchClients);
     const resetForm = () => {
-        setFamiliyaValue("");
-        setNameValue("");
-        setOtchestvoValue("");
+        setSecondnameValue("");
+        setFirstnameValue("");
+        setLastnameValue("");
         setPhoneValue("");
         setEmailValue("");
-        setAddressValue("");
+        setAddresValue("");
     };
-
     React.useEffect(() => {
         if (isOpen) {
             resetForm();
         }
     }, [isOpen]);
-
+    const onClickCreate = () => {
+        CreateClientService({
+            firstname: firstnameValue,
+            secondname: secondnameValue,
+            lastname: lastnameValue,
+            phone: phoneValue,
+            email: emailValue,
+            addres: addresValue,
+        })
+            .then(() => onClose())
+            .then(() => fetchClients());
+    };
     return (
         <div className={styles.createClientForm}>
             <div className={styles.fields}>
                 <div className={styles.field}>
                     <span className={styles.field_title}>Фамилия</span>
                     <Input
-                        value={familiyaValue}
-                        onChange={(value) => setFamiliyaValue(value)}
+                        value={secondnameValue}
+                        onChange={(value) => setSecondnameValue(value)}
                         className={styles.field_input}
                     />
                 </div>
                 <div className={styles.field}>
                     <span className={styles.field_title}>Имя</span>
                     <Input
-                        value={nameValue}
-                        onChange={(value) => setNameValue(value)}
+                        value={firstnameValue}
+                        onChange={(value) => setFirstnameValue(value)}
                         className={styles.field_input}
                     />
                 </div>
                 <div className={styles.field}>
                     <span className={styles.field_title}>Отчество</span>
                     <Input
-                        value={otchestvoValue}
-                        onChange={(value) => setOtchestvoValue(value)}
+                        value={lastnameValue}
+                        onChange={(value) => setLastnameValue(value)}
                         className={styles.field_input}
                     />
                 </div>
@@ -75,8 +88,8 @@ export const CreateClientForm = (props: CreateClientFormProps) => {
                 <div className={styles.field}>
                     <span className={styles.field_title}>Адрес</span>
                     <Input
-                        value={addressValue}
-                        onChange={(value) => setAddressValue(value)}
+                        value={addresValue}
+                        onChange={(value) => setAddresValue(value)}
                         className={styles.field_input}
                     />
                 </div>
@@ -85,7 +98,7 @@ export const CreateClientForm = (props: CreateClientFormProps) => {
                 <Button
                     theme={ButtonTheme.CREATE_CLIENT}
                     className={styles.buttons_create}
-                    onClick={onClose}
+                    onClick={onClickCreate}
                 >
                     Сохранить
                 </Button>

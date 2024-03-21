@@ -6,6 +6,9 @@ import { MainPage } from "pages/MainPage";
 import { SigninPage } from "pages/SigninPage";
 import { RouteProps } from "react-router-dom";
 
+export type AppRouterProps = RouteProps & {
+    authOnly?: boolean;
+};
 export enum AppRoutes {
     MAIN = "main",
     SIGNIN = "signin",
@@ -24,7 +27,7 @@ export const RouterPath: Record<AppRoutes, string> = {
     [AppRoutes.FRAME]: "/dashboard/client/:id/frame",
 };
 
-export const RoutesConfig: Record<AppRoutes, RouteProps> = {
+export const RoutesConfig: Record<AppRoutes, AppRouterProps> = {
     [AppRoutes.MAIN]: {
         path: RouterPath.main,
         element: <MainPage />,
@@ -36,17 +39,21 @@ export const RoutesConfig: Record<AppRoutes, RouteProps> = {
     [AppRoutes.DASHBOARD]: {
         path: RouterPath.dashboard,
         element: <DashboardPage />,
+        authOnly: true,
     },
     [AppRoutes.CLIENT]: {
         path: RouterPath.client,
         element: <ClientCardPage />,
+        authOnly: true,
     },
     [AppRoutes.FOUNDATION]: {
         path: RouterPath.foundation,
         element: <CreateFoundationPage />,
+        authOnly: true,
     },
     [AppRoutes.FRAME]: {
         path: RouterPath.frame,
         element: <CreateFramePage />,
+        authOnly: true,
     },
 };

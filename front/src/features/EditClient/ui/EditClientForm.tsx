@@ -1,29 +1,35 @@
 import Input from "shared/ui/Input/Input";
 import styles from "./EditClientForm.module.scss";
-import React, { useContext } from "react";
+import React from "react";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { ClientContext } from "app/providers/userContext/userContext";
 import { EditClientFormProps } from "../model/types/EditClientFormType";
 
 export const EditClientForm = (props: EditClientFormProps) => {
-    const { isOpen, onClose } = props;
-    const Client = useContext(ClientContext);
-    const [familiyaValue, setFamiliyaValue] = React.useState(Client.familiya);
-    const [nameValue, setNameValue] = React.useState(Client.name);
-    const [otchestvoValue, setOtchestvoValue] = React.useState(
-        Client.otchestvo
-    );
-    const [phoneValue, setPhoneValue] = React.useState(Client.phone);
-    const [emailValue, setEmailValue] = React.useState(Client.email);
-    const [addressValue, setAddressValue] = React.useState(Client.address);
+    const {
+        isOpen,
+        onClose,
+        id,
+        lastname,
+        firstname,
+        secondname,
+        phone,
+        email,
+        addres,
+    } = props;
+    const [familiyaValue, setFamiliyaValue] = React.useState("");
+    const [nameValue, setNameValue] = React.useState("");
+    const [otchestvoValue, setOtchestvoValue] = React.useState("");
+    const [phoneValue, setPhoneValue] = React.useState("");
+    const [emailValue, setEmailValue] = React.useState("");
+    const [addressValue, setAddressValue] = React.useState("");
     const [clientEditing, setClientEditing] = React.useState(false);
     const resetForm = () => {
-        setFamiliyaValue(Client.familiya);
-        setNameValue(Client.name);
-        setOtchestvoValue(Client.otchestvo);
-        setPhoneValue(Client.phone);
-        setEmailValue(Client.email);
-        setAddressValue(Client.address);
+        setFamiliyaValue("");
+        setNameValue("");
+        setOtchestvoValue("");
+        setPhoneValue("");
+        setEmailValue("");
+        setAddressValue("");
         setClientEditing(false);
     };
     const onCLickCancel = () => {

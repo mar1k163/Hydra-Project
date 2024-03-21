@@ -2,36 +2,32 @@ import styles from "./ClientCardRaschet.module.scss";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import CopyIcon from "shared/assets/icons/Copy.svg?react";
 import TrashcanIcon from "shared/assets/icons/Trashcan.svg?react";
+import { Calculation } from "entities/ClientCard/model/types/ClientCardType";
 
-interface ClientCardRaschetProps {
-    raschet_n: number;
-    status: number;
-    date: string;
-    address: string;
-}
-
-export const ClientCardRaschet = (props: ClientCardRaschetProps) => {
-    const { raschet_n, status, date, address } = props;
-    const statusVar = ["Заключен договор", "Актуален", "Не актуален"];
+export const ClientCardRaschet = (props: Calculation) => {
+    const { id, addres_object_constractions, number, created_date } = props;
     return (
         <div className={styles.raschet}>
             <div className={styles.raschet_info}>
                 <Button className={styles.raschet_item}>
-                    Расчет №{raschet_n}
+                    Расчет №{number}
                 </Button>
-                <span className={styles.raschet_item}>{date} </span>
-                <span className={styles.raschet_item}>{statusVar[status]}</span>
-                <span className={styles.raschet_item}>{address}</span>
+                <span className={styles.raschet_item}>
+                    {created_date.toString()}
+                </span>
+                <span className={styles.raschet_item}>Статус??</span>
+                <span className={styles.raschet_item}>
+                    {addres_object_constractions}
+                </span>
             </div>
             <div className={styles.raschet_buttons}>
                 <Button theme={ButtonTheme.CLEAR}>
                     <CopyIcon />
                 </Button>
-                {status !== 0 && (
-                    <Button theme={ButtonTheme.CLEAR}>
-                        <TrashcanIcon />
-                    </Button>
-                )}
+
+                <Button theme={ButtonTheme.CLEAR}>
+                    <TrashcanIcon />
+                </Button>
             </div>
         </div>
     );

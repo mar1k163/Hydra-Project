@@ -1,22 +1,35 @@
-import { Suspense } from "react";
+import { Suspense, useCallback } from "react";
 import { Route, Routes } from "react-router-dom";
-import { RoutesConfig } from "shared/config/routerConfig/routerConfig";
+import {
+    AppRouterProps,
+    RoutesConfig,
+} from "shared/config/routerConfig/routerConfig";
 import { Layout } from "shared/ui/Layout/Layout";
 import { PageLoader } from "widgets/PageLoader/PageLoader";
-export const AppRouter = () => (
-    <Suspense fallback={""}>
-        <Routes>
-            {Object.values(RoutesConfig).map(({ element, path }) => (
-                <Route
-                    key={path}
-                    path={path}
-                    element={
-                        <Suspense fallback={<PageLoader />}>
-                            <Layout>{element}</Layout>
-                        </Suspense>
-                    }
-                />
-            ))}
-        </Routes>
-    </Suspense>
-);
+import { RequireAuth } from "./RequireAuth";
+import { AuthedRedirect } from "./AuthedRedirect";
+export const AppRouter = () => {
+    const renderWithWrapper = useCallback((route: AppRouterProps) => {
+        const element = (
+            <Suspense fallback={<PageLoader />}>
+                <Layout>{route.element}</Layout>
+            </Suspense>
+        );
+        return (
+            <Route
+                key={route.path}
+                path={route.path}
+                element={
+                    route.authOnly ? (
+                        <RequireAuth>{element}</RequireAuth>
+                    ) : (
+                        <AuthedRedirect>{element}</AuthedRedirect>
+                    )
+                }
+            />
+        );
+    }, []);
+    return (
+        <Routes>{Object.values(RoutesConfig).map(renderWithWrapper)}</Routes>
+    );
+};
