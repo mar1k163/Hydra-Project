@@ -28,18 +28,18 @@ export class CustomersService {
   }
 
   findByUserId(userId: number) {
-    const qb = this.repository.createQueryBuilder("file");
-
-    qb.where("file.userId = :userId", { userId });
-    return qb.getMany();
+    return this.repository
+      .createQueryBuilder("file")
+      .where("file.userId = :userId", { userId })
+      .getMany();
   }
 
   findById(userId: number, id: number) {
-    const qb = this.repository.createQueryBuilder("file");
-
-    qb.where("file.userId = :userId", { userId });
-    qb.andWhere("file.id = :id", { id });
-    return qb.getMany();
+    return this.repository
+      .createQueryBuilder("file")
+      .where("file.userId = :userId", { userId })
+      .andWhere("file.id = :id", { id })
+      .getMany();
   }
 
   findAll() {
