@@ -15,7 +15,8 @@ export const ClientsItem = (props: Client) => {
             onClick={handleNavigate}
         >
             <span>
-                {firstname} {secondname} {lastname}
+                {firstname.slice(0, 30)} {secondname.slice(0, 30)}{" "}
+                {lastname.slice(0, 30)}
             </span>
         </Button>
     );

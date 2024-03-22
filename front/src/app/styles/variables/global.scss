@@ -13,14 +13,18 @@
     --bg-color: #fff;
     --primary-color: rgb(0, 0, 0);
     --secondary-color: #222;
-    --header-height: 160px;
     --client-card-bg-color: #ffffff;
     --client-card-color: rgb(0, 0, 0);
     --client-card-border-color: black;
     --raschet-border-color: gray;
+
+    //vars
+    --header-height: 190px;
+
     //modal
     --modal-bg-color: #ffffff;
     --overlay-bg-color: rgb(0 0 0 / 60%);
+
     //index
     --modal-z-index: 10;
 }

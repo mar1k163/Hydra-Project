@@ -4,27 +4,26 @@ import ArrowIcon from "shared/assets/icons/arrow.svg?react";
 import { useNavigate } from "react-router-dom";
 import Logout from "entities/User/services/Logout";
 import React from "react";
+import { RouterPath } from "shared/config/routerConfig/routerConfig";
 
 interface PageTitleProps {
     title: string;
-    route: string;
-    logout?: boolean;
 }
 export const PageTitle = (props: PageTitleProps) => {
-    const { title, route, logout } = props;
+    const { title } = props;
     const [lgout, setLgout] = React.useState(false);
     const navigate = useNavigate();
-    const handleNavigate = () => {
-        if (logout === true) {
+    const handleButtonClick = () => {
+        if (location.pathname === RouterPath.dashboard) {
             setLgout(true);
         } else {
-            navigate(route);
+            navigate(-1);
         }
     };
 
     return (
         <div className={styles.PageTitle}>
-            <Button theme={ButtonTheme.CLEAR} onClick={handleNavigate}>
+            <Button theme={ButtonTheme.CLEAR} onClick={handleButtonClick}>
                 <ArrowIcon />
             </Button>
             <p>{title}</p>

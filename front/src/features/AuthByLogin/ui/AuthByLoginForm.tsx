@@ -10,7 +10,6 @@ export const AuthByLoginForm = () => {
     const [password, setPassword] = React.useState("");
     const fetchUser = useUserStore((state) => state.fetchUser);
     const [err, setErr] = React.useState(false);
-
     const onClickLogin = async () => {
         setErr(false);
         AuthByLoginService({ login: login, password: password })
@@ -47,7 +46,13 @@ export const AuthByLoginForm = () => {
                         />
                     </div>
                 </div>
-                <Button className={styles.btn} onClick={onClickLogin}>
+                <Button
+                    className={`${styles.btn} ${
+                        password.length < 5 ? styles.disabled : ""
+                    }`}
+                    onClick={onClickLogin}
+                    disabled={password.length < 5}
+                >
                     Войти
                 </Button>
             </div>

@@ -2,6 +2,8 @@ import React, { useCallback } from "react";
 import { useRef, type ReactNode } from "react";
 import styles from "./Modal.module.scss";
 import { Portal } from "../Portal/Portal";
+import CloseIcon from "shared/assets/icons/close.svg?react";
+import { Button, ButtonTheme } from "../Button/Button";
 
 interface ModalProps {
     children?: ReactNode;
@@ -46,10 +48,6 @@ export const Modal = (props: ModalProps) => {
         };
     }, [isOpen, onKeyDown]);
 
-    const onContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
     return (
         <Portal>
             <div
@@ -58,8 +56,15 @@ export const Modal = (props: ModalProps) => {
                     isClosing ? styles.closed : ""
                 }`}
             >
-                <div className={styles.overlay} onClick={onClickClose}>
-                    <div className={styles.content} onClick={onContentClick}>
+                <div className={styles.overlay}>
+                    <div className={styles.content}>
+                        <Button
+                            theme={ButtonTheme.CLEAR}
+                            className={styles.close}
+                            onClick={onClickClose}
+                        >
+                            <CloseIcon />
+                        </Button>
                         {children}
                     </div>
                 </div>

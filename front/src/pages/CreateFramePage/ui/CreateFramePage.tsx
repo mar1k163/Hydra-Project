@@ -6,7 +6,7 @@ export const CreateFramePage = () => {
     return (
         <>
             <Header isClient={true} />
-            <PageTitle title="Каркас" route="/dashboard" />
+            <PageTitle title="Каркас" />
             <CreateFrameForm />
         </>
     );
