@@ -35,14 +35,14 @@ export const Header = (props: HeaderProps) => {
                             <p className={styles.client_title}>Клиент:</p>
                             <div className={styles.client_info}>
                                 <span className={styles.client_info_name}>
-                                    {client[0].firstname} {client[0].secondname}{" "}
-                                    {client[0].lastname}
+                                    {client.firstname} {client.secondname}{" "}
+                                    {client.lastname}
                                 </span>
                                 <span className={styles.client_info_adress}>
-                                    {client[0].addres}
+                                    {client.addres}
                                 </span>
                                 <span className={styles.client_info_tel}>
-                                    {client[0].phone}
+                                    {client.phone}
                                 </span>
                             </div>
                         </div>

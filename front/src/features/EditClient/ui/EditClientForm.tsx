@@ -3,6 +3,8 @@ import styles from "./EditClientForm.module.scss";
 import React from "react";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { EditClientFormProps } from "../model/types/EditClientFormType";
+import { EditClientService } from "../model/services/EditClientService";
+import { useClientStore } from "entities/Clients/model/store/ClientsStore";
 
 export const EditClientForm = (props: EditClientFormProps) => {
     const {
@@ -16,22 +18,22 @@ export const EditClientForm = (props: EditClientFormProps) => {
         email,
         addres,
     } = props;
-    const [familiyaValue, setFamiliyaValue] = React.useState("");
-    const [nameValue, setNameValue] = React.useState("");
-    const [otchestvoValue, setOtchestvoValue] = React.useState("");
-    const [phoneValue, setPhoneValue] = React.useState("");
-    const [emailValue, setEmailValue] = React.useState("");
-    const [addressValue, setAddressValue] = React.useState("");
+    const [secondnameValue, setSecondnameValue] = React.useState(secondname);
+    const [firstnameValue, setFirstnameValue] = React.useState(firstname);
+    const [lastnameValue, setLastnameValue] = React.useState(lastname);
+    const [phoneValue, setPhoneValue] = React.useState(phone);
+    const [emailValue, setEmailValue] = React.useState(email);
+    const [addresValue, setAddresValue] = React.useState(addres);
     const [clientEditing, setClientEditing] = React.useState(false);
+    const fetchClient = useClientStore((state) => state.fetchThisClient);
     console.log(id, lastname, firstname, secondname, phone, email, addres);
-
     const resetForm = () => {
-        setFamiliyaValue("");
-        setNameValue("");
-        setOtchestvoValue("");
-        setPhoneValue("");
-        setEmailValue("");
-        setAddressValue("");
+        setSecondnameValue(secondname);
+        setFirstnameValue(firstname);
+        setLastnameValue(lastname);
+        setPhoneValue(phone);
+        setEmailValue(email);
+        setAddresValue(addres);
         setClientEditing(false);
     };
     const onCLickCancel = () => {
@@ -43,7 +45,19 @@ export const EditClientForm = (props: EditClientFormProps) => {
             resetForm();
         }
     }, [isOpen]);
-
+    const onClickEditClient = () => {
+        EditClientService({
+            id: id,
+            firstname: firstnameValue,
+            secondname: secondnameValue,
+            lastname: lastnameValue,
+            phone: phoneValue,
+            email: emailValue,
+            addres: addresValue,
+        })
+            .then(() => onClose())
+            .then(() => fetchClient(id));
+    };
     return (
         <div className={styles.createClientForm}>
             <div className={styles.fields}>
@@ -54,8 +68,8 @@ export const EditClientForm = (props: EditClientFormProps) => {
                 >
                     <span className={styles.field_title}>Фамилия</span>
                     <Input
-                        value={familiyaValue}
-                        onChange={(value) => setFamiliyaValue(value)}
+                        value={secondnameValue}
+                        onChange={(value) => setSecondnameValue(value)}
                         className={styles.field_input}
                         disabled={!clientEditing}
                     />
@@ -67,8 +81,8 @@ export const EditClientForm = (props: EditClientFormProps) => {
                 >
                     <span className={styles.field_title}>Имя</span>
                     <Input
-                        value={nameValue}
-                        onChange={(value) => setNameValue(value)}
+                        value={firstnameValue}
+                        onChange={(value) => setFirstnameValue(value)}
                         className={styles.field_input}
                         disabled={!clientEditing}
                     />
@@ -80,8 +94,8 @@ export const EditClientForm = (props: EditClientFormProps) => {
                 >
                     <span className={styles.field_title}>Отчество</span>
                     <Input
-                        value={otchestvoValue}
-                        onChange={(value) => setOtchestvoValue(value)}
+                        value={lastnameValue}
+                        onChange={(value) => setLastnameValue(value)}
                         className={styles.field_input}
                         disabled={!clientEditing}
                     />
@@ -121,8 +135,8 @@ export const EditClientForm = (props: EditClientFormProps) => {
                 >
                     <span className={styles.field_title}>Адрес</span>
                     <Input
-                        value={addressValue}
-                        onChange={(value) => setAddressValue(value)}
+                        value={addresValue}
+                        onChange={(value) => setAddresValue(value)}
                         className={styles.field_input}
                         disabled={!clientEditing}
                     />
@@ -151,7 +165,7 @@ export const EditClientForm = (props: EditClientFormProps) => {
                 <Button
                     theme={ButtonTheme.CREATE_CLIENT}
                     className={styles.buttons_create}
-                    onClick={onClose}
+                    onClick={onClickEditClient}
                 >
                     Сохранить
                 </Button>
