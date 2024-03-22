@@ -43,6 +43,7 @@ export const AuthByLoginForm = () => {
                             className={styles.input}
                             value={password}
                             onChange={(val) => setPassword(val)}
+                            type="password"
                         />
                     </div>
                 </div>
