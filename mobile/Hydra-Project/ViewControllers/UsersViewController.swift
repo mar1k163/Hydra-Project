@@ -13,6 +13,7 @@ final class UsersViewController: UIViewController {
     
     private var addUserButton = UIBarButtonItem()
     private var signOutButton = UIBarButtonItem()
+    private var clients: [Client] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,13 @@ final class UsersViewController: UIViewController {
         setupView()
         addSubview()
         setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        clients = StorageManager.shared.fetchClients()
+        usersTableView.reloadData()
     }
     
     @objc
@@ -87,12 +95,12 @@ private extension UsersViewController {
 //MARK: Table View DataSource
 extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        clients.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Иванов Иван Иванович"
+        cell.textLabel?.text = clients[indexPath.row].fullName
         
         return cell
     }
@@ -101,10 +109,12 @@ extension UsersViewController: UITableViewDataSource {
 //MARK: Table View Delegate
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        profileVC.modalPresentationStyle = .fullScreen
-        present(profileVC, animated: true)
+        let clientVC = ClientProfileViewController()
+        clientVC.configure(client: clients[indexPath.row])
+        let navigationClientVC = UINavigationController(rootViewController: clientVC)
+        navigationClientVC.modalPresentationStyle = .fullScreen
         
+        present(navigationClientVC, animated: true)
         usersTableView.deselectRow(at: indexPath, animated: true)
     }
 }

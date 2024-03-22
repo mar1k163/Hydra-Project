@@ -40,13 +40,17 @@ final class AddUserViewController: UIViewController {
         setupView()
         addSubview()
         setupLayout()
+        
+        phoneTF.keyboardType = .phonePad
     }
     
-    private func showAlert(title: String, message: String) {
+    private func showAlert(title: String, message: String, closeView: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in 
-            dismiss(animated: true)
+            if closeView {
+                dismiss(animated: true)
+            }
         }
         alert.addAction(okAction)
         
@@ -60,7 +64,24 @@ final class AddUserViewController: UIViewController {
     
     @objc
     private func createButtonPressed() {
-        showAlert(title: "Клиент добавлен", message: "Вы успешно добавили нового клиента.")
+        if let name = nameTF.text, !name.isEmpty,
+           let surname = surnameTF.text, !surname.isEmpty,
+           let patronymic = patronymicTF.text, !patronymic.isEmpty,
+           let phone = Int(phoneTF.text ?? ""),
+           let email = emailTF.text, !email.isEmpty,
+           let address = addressTF.text, !address.isEmpty {
+            StorageManager.shared.saveClient(client: Client(
+                name: name,
+                surname: surname,
+                patronymic: patronymic,
+                phoneNumber: phone,
+                email: email,
+                address: address
+            ))
+            showAlert(title: "Клиент добавлен", message: "Вы успешно добавили нового клиента.", closeView: true)
+        } else {
+            showAlert(title: "Клиент не добавлен", message: "Все поля должны быть заполнены.", closeView: false)
+        }
     }
 }
 

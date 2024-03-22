@@ -10,16 +10,37 @@ import Foundation
 final class StorageManager {
     static let shared = StorageManager()
     
-    private func saveUser() {
+    private let userDefaults = UserDefaults.standard
+    private let clientsKey = "clients"
+    
+    func saveClient(client: Client) {
+        var clients = fetchClients()
+        clients.append(client)
         
+        guard let data = try? JSONEncoder().encode(clients) else { return }
+        
+        userDefaults.setValue(data, forKey: clientsKey)
     }
     
-    private func deleteUser() {
+    func deleteClient(id: String) {
+        var clients = fetchClients()
         
+        for index in 0..<clients.count {
+            if clients[index].id == id {
+                clients.remove(at: index)
+            }
+        }
+        
+        guard let data = try? JSONEncoder().encode(clients) else { return }
+        
+        userDefaults.setValue(data, forKey: clientsKey)
     }
     
-    private func fetchUser() {
+    func fetchClients() -> [Client] {
+        guard let data = userDefaults.data(forKey: clientsKey) else { return [] }
+        guard let clients = try? JSONDecoder().decode([Client].self, from: data) else { return [] }
         
+        return clients
     }
     
     private init() { }
