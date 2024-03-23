@@ -8,10 +8,11 @@ import { MaterialsDTO } from './dto/materials.dto';
 export class MaterialsService {
   constructor(
     @InjectRepository(Materials)
-    private readonly materialsRepository: Repository<Materials>,
+    private materialsRepository: Repository<Materials>,
   ) {}
 
-  async create(materialsData: MaterialsDTO): Promise<Materials> {
-    return this.materialsRepository.save(materialsData);
+  async create(materialDto: MaterialsDTO): Promise<Materials> {
+    const material = this.materialsRepository.create(materialDto);
+    return await this.materialsRepository.save(material);
   }
 }
