@@ -1,5 +1,5 @@
-import { MaterialCharacteristics } from "src/material_characteristics/entity/material_characteristics.entity";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { MaterialCharacteristics } from "src/material_characteristics/entity/material_characteristics.entity";
 
 @Entity()
 export class MeasurementUnits {
@@ -10,8 +10,8 @@ export class MeasurementUnits {
   measurement_units_name: string;
 
   @OneToMany(
-    (type) => MaterialCharacteristics,
-    (material) => material.measurement_unit
+    () => MaterialCharacteristics,
+    (material_characteristics) => material_characteristics.measurement_unit
   )
-  material: MaterialCharacteristics[];
+  material_characteristics: MaterialCharacteristics[];
 }
