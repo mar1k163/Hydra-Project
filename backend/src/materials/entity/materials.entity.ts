@@ -9,10 +9,10 @@ export class Materials {
   @Column()
   name: string;
 
-  @Column()
-  material_type: string;
+  @Column({ nullable: true })
+  material_type: string;  
 
-  @Column()
+  @Column({ nullable: true })
   structural_element_type: string;
 
   @OneToMany(
