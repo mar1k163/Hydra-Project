@@ -8,10 +8,19 @@ import { MeasurementUnitsDTO } from './dto/measurement_units.dto';
 export class MeasurementUnitsService {
   constructor(
     @InjectRepository(MeasurementUnits)
-    private readonly measurementUnitsRepository: Repository<MeasurementUnits>,
+    private measurementUnitsRepository: Repository<MeasurementUnits>,
   ) {}
 
-  async create(measurementUnitsData: MeasurementUnitsDTO): Promise<MeasurementUnits> {
-    return this.measurementUnitsRepository.save(measurementUnitsData);
+  async findAll(): Promise<MeasurementUnits[]> {
+    return this.measurementUnitsRepository.find();
+  }
+
+  async findById(id: number): Promise<MeasurementUnits> {
+    return this.measurementUnitsRepository.findOne({ where: { id } });
+  }
+
+  async create(createMeasurementUnitDto: MeasurementUnitsDTO): Promise<MeasurementUnits> {
+    const measurementUnit = this.measurementUnitsRepository.create(createMeasurementUnitDto);
+    return this.measurementUnitsRepository.save(measurementUnit);
   }
 }
