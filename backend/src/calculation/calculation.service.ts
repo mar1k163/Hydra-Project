@@ -23,6 +23,7 @@ export class CalculationService {
   findById(id: number) {
     return this.repository
       .createQueryBuilder("calculation")
+      .leftJoinAndSelect("calculation.state", "state")
       .where("calculation.cust = :id", { id })
       .getMany();
   }
