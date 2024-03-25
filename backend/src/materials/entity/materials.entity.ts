@@ -1,5 +1,5 @@
-import { MaterialCharacteristics } from "src/material_characteristics/entity/material_characteristics.entity";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { MaterialCharacteristics } from "src/material_characteristics/entity/material_characteristics.entity";
 
 @Entity()
 export class Materials {
@@ -9,15 +9,15 @@ export class Materials {
   @Column()
   name: string;
 
-  @Column()
-  material_type: string;
+  @Column({ nullable: true })
+  material_type: string;  
 
-  @Column()
+  @Column({ nullable: true })
   structural_element_type: string;
 
   @OneToMany(
-    (type) => MaterialCharacteristics,
-    (material_caracteristics_id) => material_caracteristics_id.material
+    () => MaterialCharacteristics,
+    (material_characteristics) => material_characteristics.material
   )
-  material_caracteristics_id: MaterialCharacteristics[];
+  material_characteristics: MaterialCharacteristics[];
 }

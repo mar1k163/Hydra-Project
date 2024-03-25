@@ -11,12 +11,15 @@ export class MaterialCharacteristics {
   name: string;
 
   @ManyToOne(
-    (type) => MeasurementUnits,
-    (measurement_unit) => measurement_unit.material
+    () => MeasurementUnits,
+    (measurement_unit) => measurement_unit.material_characteristics
   )
   measurement_unit: MeasurementUnits;
 
-  @ManyToOne(() => Materials, (material) => material.material_caracteristics_id)
+  @ManyToOne(
+    () => Materials,
+    (material) => material.material_characteristics
+  )
   material: Materials;
 
   @Column({ type: "float", nullable: true })

@@ -8,10 +8,19 @@ import { MaterialsDTO } from './dto/materials.dto';
 export class MaterialsService {
   constructor(
     @InjectRepository(Materials)
-    private readonly materialsRepository: Repository<Materials>,
+    private materialsRepository: Repository<Materials>,
   ) {}
 
-  async create(materialsData: MaterialsDTO): Promise<Materials> {
-    return this.materialsRepository.save(materialsData);
+  async findAll(): Promise<Materials[]> {
+    return this.materialsRepository.find();
+  }
+
+  async findById(id: number): Promise<Materials> {
+    return this.materialsRepository.findOne({ where: { id } });
+  }
+  
+  async create(materialDto: MaterialsDTO): Promise<Materials> {
+    const material = this.materialsRepository.create(materialDto);
+    return this.materialsRepository.save(material);
   }
 }
