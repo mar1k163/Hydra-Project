@@ -20,4 +20,19 @@ export class MaterialCharacteristicsDTO {
 		default: 100,
 	  })
 	  volume: number;
+
+	  @ApiProperty({
+		default: 1,
+	  })
+	  materials_id: number;
+
+	  @ApiProperty({
+		default: 1,
+	  })
+	  measurement_unit_id: number;
+
+	  @ApiProperty({
+		default: "Имя",
+	  })
+	  name: string;
 	}
