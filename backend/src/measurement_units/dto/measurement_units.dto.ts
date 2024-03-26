@@ -1,4 +1,9 @@
+  import { ApiProperty } from "@nestjs/swagger";
+
 export class MeasurementUnitsDTO {
-	readonly measurement_units_name: string;
-  }
-  
+	@ApiProperty({
+		default: "Name",
+	  })
+	  measurement_units_name: string;
+	
+	}

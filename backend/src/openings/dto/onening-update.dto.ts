@@ -1,5 +1,19 @@
+  import { ApiProperty } from "@nestjs/swagger";
+
 export class OpeningUpdateDTO {
-	readonly type?: string;
-	readonly width?: number;
-	readonly height?: number;
-  }
+	@ApiProperty({
+		default: 10,
+	  })
+	  type: string;
+	
+	  @ApiProperty({
+		default: 5,
+	  })
+	  width: number;
+	
+	  @ApiProperty({
+		default: 2,
+	  })
+	  height: number;
+	
+	}
