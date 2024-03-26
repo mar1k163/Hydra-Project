@@ -1,7 +1,19 @@
+import { ApiProperty } from "@nestjs/swagger";
+
 export class PriceListsDTO {
-	readonly material_characteristics_id: number;
-	readonly date: Date;
-	readonly purchase_price: number;
-	readonly selling_price: number;
+	@ApiProperty({
+		default: "2024-03-24",
+	  })
+	  date: string;
+	
+	  @ApiProperty({
+		default: 1000,
+	  })
+	  purchasePrice: number;
+	
+	  @ApiProperty({
+		default: 1500,
+	  })
+	  sellingPrice: number;
   }
   
