@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Materials } from './entity/materials.entity';
-import { MaterialsDTO } from './dto/materials.dto';
+import { CreateMaterialDto } from './dto/materials.dto';
 
 @Injectable()
 export class MaterialsService {
@@ -19,7 +19,7 @@ export class MaterialsService {
     return this.materialsRepository.findOne({ where: { id } });
   }
   
-  async create(materialDto: MaterialsDTO): Promise<Materials> {
+  async create(materialDto: CreateMaterialDto): Promise<Materials> {
     const material = this.materialsRepository.create(materialDto);
     return this.materialsRepository.save(material);
   }

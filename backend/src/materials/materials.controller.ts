@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { MaterialsService } from './materials.service';
 import { Materials } from './entity/materials.entity';
-import { MaterialsDTO } from './dto/materials.dto';
+import { CreateMaterialDto } from './dto/materials.dto';
 
 @Controller('materials')
 export class MaterialsController {
@@ -18,7 +18,7 @@ export class MaterialsController {
   }
 
   @Post()
-  async createMaterial(@Body() materialDto: MaterialsDTO): Promise<Materials> {
+  async createMaterial(@Body() materialDto: CreateMaterialDto): Promise<Materials> {
     return this.materialsService.create(materialDto);
   }
 }
