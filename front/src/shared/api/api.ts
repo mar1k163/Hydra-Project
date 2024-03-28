@@ -1,7 +1,7 @@
 import axios from "axios";
 import { LOCALSTORAGE_TOKEN_KEY } from "shared/const/localstorage";
 export const $api = axios.create({
-    baseURL: "http://158.160.157.98",
+    baseURL: "http://localhost:7777",
 });
 
 $api.interceptors.request.use((config) => {
