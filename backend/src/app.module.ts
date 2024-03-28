@@ -26,7 +26,7 @@ import { OpeningModule } from "./openings/opening.module";
 import { MaterialsModule } from "./materials/materials.module";
 import { StructuralElementFrameModule } from "./structural_element_frame/structural_element_frame.module";
 import { Materials } from "./materials/entity/materials.entity";
-import { StructuralElementFrame } from "./structural_element_frame/entity/structural_element_frame.entity";
+import { StructuralElementFrameEntity } from "./structural_element_frame/entity/structural_element_frame.entity";
 import { PriceListsModule } from "./price_list/price_list.module";
 import { PriceLists } from "./price_list/entity/price_list.entity";
 import { MaterialCharacteristicsModule } from "./material_characteristics/material_characteristics.module";
@@ -58,7 +58,7 @@ import { Opening } from "./openings/entity/opening.entity";
         UsersGroupEntity,
         UserUsergroupEntity,
         Materials,
-        StructuralElementFrame,
+        StructuralElementFrameEntity,
         PriceLists,
         MaterialCharacteristics,
         OpeningsInFrame,

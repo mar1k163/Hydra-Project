@@ -1,13 +1,22 @@
-import { Controller, Post, Body } from '@nestjs/common';
-import { FrameCalculationDto } from './dto/structural_element_frame.dto';
-import { FrameCalculationService } from './structural_element_frame.service';
+import { Controller, Post, Body, Get } from "@nestjs/common";
+import { FrameCalculationDto } from "./dto/structural_element_frame.dto";
+import { FrameCalculationService } from "./structural_element_frame.service";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller('frame')
+@Controller("frame")
+@ApiTags("frame")
 export class FrameCalculationController {
-  constructor(private readonly frameCalculationService: FrameCalculationService) {}
+  constructor(
+    private readonly frameCalculationService: FrameCalculationService
+  ) {}
 
-  @Post('calculate-first-floor')
-  calculateForFirstFloor(@Body() frameCalculationDto: FrameCalculationDto): any {
-    return this.frameCalculationService.calculateForFirstFloor(frameCalculationDto);
+  @Post("calculate-first-floor")
+  create(@Body() frameCalculationDto: FrameCalculationDto) {
+    return this.frameCalculationService.create(frameCalculationDto);
+  }
+
+  @Get()
+  findAll() {
+    return this.frameCalculationService.findAll();
   }
 }

@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { ResultsEntity } from 'src/results/entities/result.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { ResultsEntity } from "src/results/entities/result.entity";
 
 @Entity()
-export class StructuralElementFrame {
+export class StructuralElementFrameEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,19 +18,19 @@ export class StructuralElementFrame {
   @Column()
   floor_height: number;
 
-  @Column('float')
+  @Column("float")
   perimeter_of_external_walls: number;
 
-  @Column('float')
+  @Column("float")
   base_area: number;
 
-  @Column('float')
+  @Column("float")
   external_wall_thickness: number;
 
-  @Column('float')
+  @Column("float")
   internal_wall_length: number;
 
-  @Column('float')
+  @Column("float")
   internal_wall_thickness: number;
 
   @Column()
